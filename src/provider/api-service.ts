@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { Md5 } from 'ts-md5/dist/md5';
 import { Tools } from './Tools';
+import { API_HOST, API_KEY } from "../app/api_configs";
 
 /*
   Generated class for the ApiService provider.
@@ -12,8 +13,8 @@ import { Tools } from './Tools';
   for more info on providers and Angular 2 DI.
 */
 // 正式服务器和账号
-const API_HOST: string = "http://b.star.afterwind.cn/api/v1";
-const API_KEY: string = "b2cfb548ed4460dd10c7f62b33d9082e";
+// const API_HOST: string = "http://b.star.afterwind.cn/api/v1";
+// const API_KEY: string = "b2cfb548ed4460dd10c7f62b33d9082e";
 
 // 测试账号和测试服务器
 // const API_HOST: string = "http://0.0.0.0:3000/api/v1";
