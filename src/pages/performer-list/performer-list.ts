@@ -28,6 +28,9 @@ export class PerformerListPage {
   error: any = null;
   data: any = [];
 
+  tags: any = [];
+  currentTagId: any;
+
   hasMore: boolean = false;
 
   @ViewChild(Content) content: Content;
@@ -43,15 +46,34 @@ export class PerformerListPage {
   ionViewDidLoad() {
     // console.log('ionViewDidLoad PerformerListPage');
     this.iosFixed.fixedScrollFreeze(this.content);
-    
+
     setTimeout(() => {
+      this.loadTags();
       this.loadData();
-    }, 350);
+    }, 200);
+
+  }
+
+  segmentChanged() {
+    this.loadData();
+  }
+
+  loadTags() {
+    this.media.GetTags()
+      .then(res => {
+        const data = res['data'];
+        this.tags = [{ name: '全部', id: '' }].concat(data);
+        if (this.tags.length > 0) {
+          this.currentTagId = this.tags[0].id;
+          this.content.resize();
+        }
+      })
+      .catch(error => { });
   }
 
   loadData() {
     return new Promise((resolve) => {
-      this.media.GetPerformers(this.pageNum, this.pageSize)
+      this.media.GetPerformers(this.currentTagId, this.pageNum, this.pageSize)
         .then(res => {
           const data = res['data'];
           const total = res['total'];
@@ -70,7 +92,7 @@ export class PerformerListPage {
           }
 
           this.totalPage = (total + this.pageSize - 1) / this.pageSize;
-          
+
           // this.totalPage = Math.floor((data.total + this.pageSize - 1) / this.pageSize); 
           this.hasMore = this.totalPage > this.pageNum;
 
@@ -110,7 +132,7 @@ export class PerformerListPage {
 
   loadMore(e) {
     if (this.pageNum < this.totalPage) {
-      this.pageNum ++;
+      this.pageNum++;
 
       this.loadData().then(() => {
         e.complete();

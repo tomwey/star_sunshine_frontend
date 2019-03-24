@@ -10,6 +10,15 @@
     <ion-title>艺人库</ion-title>
   </ion-navbar>
 
+  <ion-toolbar color="white" *ngIf="tags.length > 0">
+    <ion-segment [(ngModel)]="currentTagId" mode="md" [class.scrollable]="tags.length > 7"
+      (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="{{tag.id}}" *ngFor="let tag of tags">
+        {{tag.name}}
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
 </ion-header>
 
 
