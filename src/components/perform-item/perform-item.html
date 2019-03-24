@@ -1,0 +1,19 @@
+<ion-item>
+  <ion-thumbnail item-left>
+    <img [src]="performer.avatar">
+
+  </ion-thumbnail>
+  <h2 class="name">{{performer.name}}&emsp;<ion-badge>{{performer.type == 1 ? '自由艺人' : '签约艺人'}}</ion-badge>
+  </h2>
+  <p class="three-measure">三围 {{performer.chest_size}},{{performer.waist_size}},{{performer.hip_size}}</p>
+  <p class="age">年龄 {{performer.age}}</p>
+  <p class="tags">
+    <span *ngFor="let tag of performer.tags">
+      <ion-badge color="gray">{{tag}}</ion-badge>&nbsp;
+    </span>
+  </p>
+  <!-- <button ion-button item-right>关注</button> -->
+  <button ion-button item-right (click)="follow(performer,$event);"
+    [class.followed]="performer.followed">{{performer.followed ? '已关注' : '关注'}}</button>
+  <!-- <ion-badge>{{performer.type == 1 ? '自由艺人' : '签约艺人'}}</ion-badge> -->
+</ion-item>

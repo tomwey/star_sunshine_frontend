@@ -10,9 +10,9 @@ import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { SettingPage } from '../pages/setting/setting';
 import { TabsPage } from '../pages/tabs/tabs';
-import { HomePage } from '../pages/home/home'; 
-import { MediaListPage } from '../pages/media-list/media-list';
-import { TopicListPage } from '../pages/topic-list/topic-list';
+import { HomePage } from '../pages/home/home';
+// import { MediaListPage } from '../pages/media-list/media-list';
+// import { TopicListPage } from '../pages/topic-list/topic-list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,19 +21,20 @@ import { Tools } from '../provider/Tools';
 import { Users } from '../provider/Users';
 import { ApiService } from '../provider/api-service';
 import { AppManager } from '../provider/AppManager';
-import { Redpacks } from '../provider/Redpacks';
-import { Pays } from '../provider/Pays';
+// import { Redpacks } from '../provider/Redpacks';
+// import { Pays } from '../provider/Pays';
 import { Wechat } from '../provider/Wechat';
 import { iOSFixedScrollFreeze } from '../provider/iOSFixedScrollFreeze';
 import { jsClipboard } from '../provider/jsClipboard';
 import { Media } from '../provider/Media';
 
-import {VgCoreModule} from 'videogular2/core';
-import {VgControlsModule} from 'videogular2/controls';
-import {VgOverlayPlayModule} from 'videogular2/overlay-play';
-import {VgBufferingModule} from 'videogular2/buffering';
+import { VgCoreModule } from 'videogular2/core';
+import { VgControlsModule } from 'videogular2/controls';
+import { VgOverlayPlayModule } from 'videogular2/overlay-play';
+import { VgBufferingModule } from 'videogular2/buffering';
 import { PipesModule } from '../pipes/pipes.module';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
+import { ComponentsModule } from '../components/components.module';
 // import { APIs } from '../provider/APIs';
 // import { ApiService } from '../provider/api-service';
 
@@ -41,8 +42,8 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
   declarations: [
     MyApp,
     HomePage,
-    MediaListPage,
-    TopicListPage,
+    // MediaListPage,
+    // TopicListPage,
     SettingPage,
     TabsPage,
     LoginPage
@@ -61,13 +62,14 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
     VgBufferingModule,
     PipesModule,
     IonicImageViewerModule,
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    MediaListPage,
-    TopicListPage,
+    // MediaListPage,
+    // TopicListPage,
     SettingPage,
     TabsPage,
     LoginPage,
@@ -75,7 +77,7 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     Utils,
     // APIs,
     Tools,
@@ -83,12 +85,12 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
     Users,
     ApiService,
     AppManager,
-    Redpacks,
-    Pays,
+    // Redpacks,
+    // Pays,
     Wechat,
     iOSFixedScrollFreeze,
     jsClipboard,
     Media,
   ]
 })
-export class AppModule {}
+export class AppModule { }

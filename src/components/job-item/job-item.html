@@ -1,0 +1,12 @@
+<ion-item>
+  <h2 class="name">{{job.name}}</h2>
+  <p class="time">
+    <ion-icon name="ios-time-outline"></ion-icon>{{job.begin_time}}—{{job.end_time}}
+  </p>
+  <p class="address">
+    <ion-icon name="ios-pin-outline"></ion-icon>{{job.address}}
+  </p>
+  <ion-note item-right>
+    <div class="price">{{job.price}}<span class="unit">元</span></div>
+  </ion-note>
+</ion-item>

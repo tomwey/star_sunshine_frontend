@@ -20,56 +20,9 @@ page-home {
     }
 
     .jobs {
-        .list-ios {
-            margin-bottom: 0;
-            margin-top: 0;
-        }
-        .item-block:first-child {
-            border-top: 0;
-        }
-        .item-block:last-child {
-            border-bottom: 0;
-        }
-        .item-ios {
-            padding-left: 0;
-            // border-bottom-color: #f2f2f2;
-        }
-        .item-inner {
-            padding-right: 0!important;
-            border-bottom-color: #f2f2f2!important;
-        }
-        .name {
-            border-bottom: 0;
-            font-size: 14px;
-            color: #333;
-            // margin-bottom: 5px;
-            padding-bottom: 5px;
-        }
-        .time,.address {
-            font-size: 12px;
-            color: #999;
-            ion-icon {
-                font-size: 16px;
-                margin-right: 3px;
-                vertical-align: -2px;
-            }
-        }
-        .address {
-            ion-icon {
-                font-size: 20px;
-            }
-        }
-        .price {
-            font-size: 18px;
-            font-family: 'PingFang SC', Arial, Helvetica, sans-serif;
-            color: color($colors, primary);
-            text-align: right;
-            .unit {
-                font-size: 12px;
-                color: #999;
-                padding-left: 2px;
-            }
-        }
+        padding-bottom: 0!important;
+        
+        
     }
 
     .box {
@@ -77,6 +30,19 @@ page-home {
         background: white;
         margin-top: 6px;
         padding: 15px;
+        .list-ios {
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+
+        .item-ios {
+            padding-left: 0;
+            // border-bottom-color: #f2f2f2;
+        }
+        .item-inner {
+            padding-right: 0!important;
+        }
+
         h2 {
             padding: 0;
             margin: 0;
@@ -94,183 +60,47 @@ page-home {
         }
     }
 
-    .votes {
-        margin-top: 10px;
-        table {
-            width: 100%;
-            td {
-                vertical-align: bottom;
-                font-size: 14px;
-                // background: red;
-                padding: 10px 5px;
-            }
-
-            .base {
-                width: 65%;
-            }
-
-            .tickets {
-                width: 25%;
-                font-size: 18px;
-                text-align: right;
-                color: rgb(149,149,149);
-            }
-
-            .percent {
-                width: 10%;
-                font-size: 18px;
-                text-align: right;
-                color: rgb(149,149,149);
-            }
-
-            .unit {
-                font-size: 10px;
-            }
-        }
-
-        h4 {
-            font-size: 14px;
-            font-weight: normal;
-            color: #333;
-        }
-
-        .progressbar {
-            margin-top: 8px;
-            width: 100%;
-            // border: 0.55px solid #e6e6e6;
-            height: 6px;
-            background: rgb(221,221,221);
-        }
-
-        .progressbar-inner {
-            // width: 40%;
-            height: 6px;
-            // height: 100%;
-            // margin-top: 1px;
-            background: color($colors, primary);
-        }
-    }
-
-    .features {
-        background: white;
-        margin-top: 6px;
-        // padding: 15px;
-
-        ion-row,ion-col {
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        // ion-col {
-        //     border-right: 0.55px solid #e6e6e6;
-        //     &:last-child {
-        //         border-right: 0;
-        //     }
-        // }
-        .feature {
-            text-align: center;
-            padding: 15px;
-            h4 {
-                font-size: 14px;
-                font-weight: normal;
-                color: #666;
-                margin: 0;
-                padding: 0;
-                // margin-bottom: 5px;
-            }
-            img {
-                max-width: 22px;
-                margin-bottom: 5px;
-            }
-            // p {
-            //     margin: 0;
-            //     padding: 0;
-            //     font-size: 12px;
-            //     color: #999;
-            // }
-        }
-    }
-
-    .media {
-        ion-row, ion-col {
-            margin: 0;
-            padding: 0;
-        }
-        ion-card {
-            margin: 0;
-            width: 100%;
-            margin-top: 10px;
-            box-shadow: none;
-        }
-
-        .title, .view-count {
-            font-size: 14px;
-            color: #666;
-            padding: 5px 0;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-
-        .view-count {
-            text-align: right;
-            padding-top: 7px;
-        }
-
-        .card-title {
-            font-size: 14px;
-            padding: 5px 0;
-        }
-
-        .media-left {
-            padding-right: 5px;
-        }
-
-        .media-right {
-            padding-left: 5px;
-        }
-    }
-
     .performers {
-        ion-row,ion-col {
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
+        padding-bottom: 0!important;
+        // ion-row,ion-col {
+        //     margin: 0;
+        //     padding: 0;
+        //     text-align: center;
+        // }
 
         // padding: px;
-        padding: 15px 0;
+        // padding: 15px 0;
 
-        .performer {
-            padding: 10px;
-            h4,p {
-                margin: 0;
-                padding: 0;
-            }
-            img {
-                width: 60px;
-                height: 60px;
+        // .performer {
+        //     padding: 10px;
+        //     h4,p {
+        //         margin: 0;
+        //         padding: 0;
+        //     }
+        //     img {
+        //         width: 60px;
+        //         height: 60px;
 
-                border-radius: 50%;
-            }
-            h4 {
-                font-size: 14px;
-                font-weight: normal;
-                color: #333;
-                margin-top: 10px;
-                margin-bottom: 5px;
-            }
-            p {
-                font-size: 12px;
-                color: #666;
-                margin-bottom: 10px;
-            }
+        //         border-radius: 50%;
+        //     }
+        //     h4 {
+        //         font-size: 14px;
+        //         font-weight: normal;
+        //         color: #333;
+        //         margin-top: 10px;
+        //         margin-bottom: 5px;
+        //     }
+        //     p {
+        //         font-size: 12px;
+        //         color: #666;
+        //         margin-bottom: 10px;
+        //     }
 
-            .followed {
-                background: white;
-                color: color($colors, primary);
-                border: 0.55px solid color($colors, primary);
-            }
-        }
+        //     .followed {
+        //         background: white;
+        //         color: color($colors, primary);
+        //         border: 0.55px solid color($colors, primary);
+        //     }
+        // }
     }
 }

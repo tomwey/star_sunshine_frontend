@@ -140,45 +140,50 @@
     </div> -->
 
     <!-- 最新通告 -->
-    <div class="box" *ngIf="entryData.latest_jobs && entryData.latest_jobs.length > 0">
+    <div class="box jobs" *ngIf="entryData.latest_jobs && entryData.latest_jobs.length > 0">
       <h2>最新通告
         <span class="more" tappable (click)="openJobs();">更多 <ion-icon name="ios-arrow-forward-outline">
           </ion-icon>
         </span>
       </h2>
-      <div class="jobs">
-        <ion-list>
-          <ion-item tappable (click)="openJob(job);" *ngFor="let job of entryData.latest_jobs">
-            <h2 class="name">{{job.name}}</h2>
-            <p class="time">
-              <ion-icon name="ios-time-outline"></ion-icon>{{job.begin_time}}—{{job.end_time}}
-            </p>
-            <p class="address">
-              <ion-icon name="ios-pin-outline"></ion-icon>{{job.address}}
-            </p>
-            <ion-note item-right>
-              <div class="price">{{job.price}}<span class="unit">元</span></div>
-            </ion-note>
-          </ion-item>
-        </ion-list>
-      </div>
+      <ion-list>
+        <div *ngFor="let job of entryData.latest_jobs" tappable (click)="openJob(job);">
+          <job-item [job]="job"></job-item>
+        </div>
+
+        <!-- <ion-item tappable (click)="openJob(job);" *ngFor="let job of entryData.latest_jobs">
+          <h2 class="name">{{job.name}}</h2>
+          <p class="time">
+            <ion-icon name="ios-time-outline"></ion-icon>{{job.begin_time}}—{{job.end_time}}
+          </p>
+          <p class="address">
+            <ion-icon name="ios-pin-outline"></ion-icon>{{job.address}}
+          </p>
+          <ion-note item-right>
+            <div class="price">{{job.price}}<span class="unit">元</span></div>
+          </ion-note>
+        </ion-item> -->
+      </ion-list>
     </div>
 
     <!-- 男神女神 -->
-    <div class="box">
+    <div class="box performers">
       <h2>推荐艺人
         <span class="more" tappable (click)="openPerformers();">更多 <ion-icon name="ios-arrow-forward-outline">
           </ion-icon>
         </span>
       </h2>
-      <div class="performers">
+      <ion-list>
+        <div tappable (click)="openZone(perform);" *ngFor="let perform of entryData.performers">
+          <perform-item [performer]="perform"></perform-item>
+        </div>
+      </ion-list>
+      <!-- <div class="">
         <ion-grid>
           <ion-row>
             <ion-col col-6 *ngFor="let perform of entryData.performers">
               <div class="performer">
-                <!-- <ion-avatar> -->
                 <img [src]="perform.avatar" tappable (click)="openZone(perform);" />
-                <!-- </ion-avatar> -->
                 <h4>{{perform.name}}</h4>
                 <p>{{perform.school}}</p>
                 <button ion-button small (click)="follow(perform);"
@@ -187,7 +192,7 @@
             </ion-col>
           </ion-row>
         </ion-grid>
-      </div>
+      </div> -->
     </div>
 
     <!-- <div class="box"></div> -->
