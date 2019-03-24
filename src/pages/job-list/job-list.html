@@ -13,6 +13,19 @@
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+  <div class="empty-error-box" *ngIf="!!error">
+    {{error.message || error}}
+  </div>
+  <div class="jobs">
+    <ion-list>
+      <div tappable (click)="openJob(job);" *ngFor="let job of jobs">
+        <job-item [job]="job"></job-item>
+      </div>
+    </ion-list>
+  </div>
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)" [enabled]="hasMore">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="正在加载...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

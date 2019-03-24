@@ -255,6 +255,20 @@ export class Media {
         });
     }
 
+    GetJobs(pageNum, pageSize) {
+        return new Promise((resolve, reject) => {
+            this.users.token().then(token => {
+                this.api.GET(`jobs`, { token: token, page: pageNum, size: pageSize })
+                    .then(data => {
+                        resolve(data);
+                    })
+                    .catch(error => {
+                        reject(error);
+                    })
+            });
+        });
+    }
+
     GetPerformers(tag_id = null, pageNum, pageSize) {
         return new Promise((resolve, reject) => {
             this.users.token().then(token => {
