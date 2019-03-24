@@ -12,7 +12,7 @@ import { Tools } from './Tools';
   for more info on providers and Angular 2 DI.
 */
 // 正式服务器和账号
-const API_HOST: string = "http://star-sunshine.afterwind.cn/api/v1";
+const API_HOST: string = "http://b.star.afterwind.cn/api/v1";
 const API_KEY: string = "b2cfb548ed4460dd10c7f62b33d9082e";
 
 // 测试账号和测试服务器
