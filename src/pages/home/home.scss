@@ -19,6 +19,58 @@ page-home {
         }
     }
 
+    .jobs {
+        .list-ios {
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+        .item-block:first-child {
+            border-top: 0;
+        }
+        .item-block:last-child {
+            border-bottom: 0;
+        }
+        .item-ios {
+            padding-left: 0;
+            // border-bottom-color: #f2f2f2;
+        }
+        .item-inner {
+            padding-right: 0!important;
+            border-bottom-color: #f2f2f2!important;
+        }
+        .name {
+            border-bottom: 0;
+            font-size: 14px;
+            color: #333;
+            // margin-bottom: 5px;
+            padding-bottom: 5px;
+        }
+        .time,.address {
+            font-size: 12px;
+            color: #999;
+            ion-icon {
+                font-size: 16px;
+                margin-right: 3px;
+                vertical-align: -2px;
+            }
+        }
+        .address {
+            ion-icon {
+                font-size: 20px;
+            }
+        }
+        .price {
+            font-size: 18px;
+            color: color($colors, primary);
+            text-align: right;
+            .unit {
+                font-size: 12px;
+                color: #999;
+                padding-left: 2px;
+            }
+        }
+    }
+
     .box {
         width: 100%;
         background: white;

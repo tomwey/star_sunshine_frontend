@@ -1,4 +1,4 @@
-import {Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Storage } from '@ionic/storage';
 import { ApiService } from "./api-service";
 
@@ -16,11 +16,12 @@ export class Users {
      */
     token(): Promise<any> {
         return new Promise((resolve) => {
-            this.storage.get('token').then( val => {
+            this.storage.get('token').then(val => {
                 // resolve('5f4391a432ed415396a73b10bdc5137f'); // 后台wmarshx用户的Token aed672e8bbe94206995a78dc6cd6ed1b
                 // resolve('d4437223dd024b599ebbee94a2b027f6'); // 本地测试
-                resolve(val);
-            } );
+                resolve('de745d7c61494c5387a2bbc400ac80f5');
+                // resolve(val);
+            });
         });
     }
 
@@ -51,7 +52,7 @@ export class Users {
                         reject(error);
                     })
             })
-            .catch(error => {});
+                .catch(error => { });
             // 
         });
     }
@@ -72,7 +73,7 @@ export class Users {
                         reject(error);
                     })
             })
-            .catch(error => {});
+                .catch(error => { });
             // 
         });
     }

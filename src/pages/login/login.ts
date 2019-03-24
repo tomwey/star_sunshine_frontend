@@ -39,7 +39,7 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    // this.iosFixed.fixedScrollFreeze(this.content);
+    this.iosFixed.fixedScrollFreeze(this.content);
     // console.log('ionViewDidLoad LoginPage');
     // this.loadUserAgreement();
   }
