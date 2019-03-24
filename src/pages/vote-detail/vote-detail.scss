@@ -1,0 +1,297 @@
+page-vote-detail {
+    h2, p {
+        margin: 0;
+        padding: 0;
+    }
+    .vote {
+        padding: 15px;
+        .base-info {
+            .title {
+                font-size: 18px;
+                color: #333;
+                font-weight: normal;
+            }
+            .time {
+                font-size: 14px;
+                color: #999;
+                margin-top: 10px;
+            }
+        }
+    }
+
+    // 以下为自定义loading spinner样式
+    vg-scrub-bar {
+        position: absolute;
+        bottom: 0;
+        height: 1px;
+        vg-scrub-bar-current-time,vg-scrub-bar-buffering-time {
+            height: 1px;
+        }
+    }
+
+    .vg-buffering .bufferingContainer {
+        margin-top: -25px;
+    }
+
+    .vg-buffering .loadingSpinner {
+        border: 2px solid rgba(255, 255, 255, 1);
+        border-top: 2px solid rgba(0, 0, 0, 0);
+        border-left: 2px solid rgba(0, 0, 0, 0);
+    }
+
+    .media-player {
+        .custom-play-button {
+            position: absolute;
+            z-index: 200;
+            width: 100%;
+            height: 100%;
+            // line-height: 50%;
+            text-align: center;
+            // padding-top: 20px;
+            .play-button {
+                font-size: 42px;
+                margin-top: 42px;
+            }
+        }
+    }
+
+    .vote-items {
+        h2 {
+            text-align: center;
+            font-size: 16px;
+            color: #333;
+            font-weight: normal;
+            margin: 30px 0;
+        }
+
+        ion-card {
+            box-shadow: none;
+            background: rgb(249,249,249);
+            border: 0.55px solid #ccc;
+            width: 100%;
+            margin: 0;
+        }
+        ion-item {
+            color: #666;
+        }
+        ion-icon {
+            // color: #999;
+            &.selected {
+                color: color($colors, primary);
+            }
+        }
+
+        ion-card-header {
+            font-weight: normal;
+        }
+
+        .vote-btn {
+            text-align: center;
+            font-size: 16px;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            // font-weight: normal;
+        }
+
+        .vote-warn {
+            margin: 20px 0;
+            font-size: 14px;
+            color: #999;
+        }
+    }
+
+    .reply-btn {
+        float: right;
+    }
+
+    .comments {
+        padding: 15px;
+        background: rgb(247,247,247);
+        .title {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            color: #333;
+            font-weight: normal;
+            // padding: 5px 0;
+            padding-bottom: 15px;
+            border-bottom: 0.55px solid #ccc;
+        }
+
+        .list-ios > .item-block:first-child {
+            border-top: none;
+        }
+
+        .list-ios .item-block .item-inner {
+            border: 0;
+        }
+
+        .list-ios > .item-block:last-child {
+            border-bottom: none;
+        }
+
+        .body {
+            .text {
+                color: #666;
+                font-size: 14px;
+            }
+            .time {
+                color: #999;
+                margin-top: 5px;
+                font-size: 12px;
+            }
+        }
+
+        ion-list,ion-item {
+            background:transparent;
+        }
+
+        .empty-error-box {
+            margin-top: 20px;
+            border: 0;
+            padding: 20px;
+        }
+
+        ion-row, ion-col {
+            margin: 0;
+            padding: 0;
+        }
+
+        .replies {
+            background-color: rgb(235,241,241);
+            padding: 5px;
+            margin-top: 10px;
+            .reply {
+                color: #666;
+            }
+        }
+
+        
+        
+        // margin-top: 10px;
+    }
+
+    .vote-stats {
+        ion-row, ion-col {
+            margin: 0;
+            padding: 0;
+        }
+        .view-count {
+            font-size: 14px;
+            color: #999;
+        }
+
+        button {
+            color: #999;
+        }
+    }
+
+    .reply-btn {
+        color: color($colors, primary);
+    }
+
+    .liked {
+        color: color($colors, primary);
+    }
+
+    .vote-result {
+        padding: 0 15px;
+        table {
+            width: 100%;
+            td {
+                vertical-align: bottom;
+                font-size: 14px;
+                // background: red;
+                padding: 10px 5px;
+            }
+
+            .base {
+                width: 65%;
+            }
+
+            .tickets {
+                width: 25%;
+                font-size: 18px;
+                text-align: right;
+                color: rgb(149,149,149);
+            }
+
+            .percent {
+                width: 10%;
+                font-size: 18px;
+                text-align: right;
+                color: rgb(149,149,149);
+            }
+
+            .unit {
+                font-size: 10px;
+            }
+        }
+
+        h4 {
+            font-size: 14px;
+            font-weight: normal;
+            color: #333;
+        }
+
+        .progressbar {
+            margin-top: 8px;
+            width: 100%;
+            // border: 0.55px solid #e6e6e6;
+            height: 6px;
+            background: rgb(221,221,221);
+        }
+
+        .progressbar-inner {
+            // width: 40%;
+            height: 6px;
+            // height: 100%;
+            // margin-top: 1px;
+            background: color($colors, primary);
+        }
+    }
+
+    .performers {
+        ion-row,ion-col {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        // padding: px;
+        padding: 15px 0;
+
+        .performer {
+            padding: 10px;
+            h4,p {
+                margin: 0;
+                padding: 0;
+            }
+            img {
+                width: 60px;
+                height: 60px;
+
+                border-radius: 50%;
+            }
+            h4 {
+                font-size: 14px;
+                font-weight: normal;
+                color: #333;
+                margin-top: 10px;
+                margin-bottom: 5px;
+            }
+            p {
+                font-size: 12px;
+                color: #666;
+                margin-bottom: 10px;
+            }
+
+            .voted {
+                background: white;
+                color: color($colors, primary);
+                border: 0.55px solid color($colors, primary);
+            }
+        }
+    }
+}

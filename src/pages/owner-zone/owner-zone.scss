@@ -1,0 +1,203 @@
+page-owner-zone {
+    .caption {
+        background: color($colors, wechat);
+        ion-item {
+            background: transparent;
+            h2, p {
+                color: white;
+            }
+        }
+
+        .item-ios.item-block .item-inner {
+            border: 0;
+        }
+
+        padding-bottom: 20px;
+        padding-top: 10px;
+
+        .custom-follow-btn {
+            font-size: 14px;
+            color: white;
+            display: inline-block;
+            padding: 5px 12px;
+            border: 0.55px solid white;
+            border-radius: 4px;
+            margin-bottom: 3px;
+        }
+    }
+
+    .pager {
+        .segment-md .segment-button {
+            height: 50px;
+            color: #666;
+            line-height: 50px;
+            font-size: 14px;
+            &.segment-activated{
+                color: color($colors, primary);
+            }
+        }
+    }
+
+    .medias {
+        ion-row, ion-col {
+            margin: 0;
+            padding: 0;
+        }
+        ion-card {
+            margin: 0;
+            width: 100%;
+            margin-top: 10px;
+            box-shadow: none;
+        }
+
+        .odd {
+            padding-left: 5px;
+            padding-right: 10px;
+        }
+
+        .even {
+            padding-left: 10px;
+            padding-right: 5px;
+        }
+
+        .title, .view-count {
+            font-size: 14px;
+            color: #666;
+            padding: 5px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .view-count {
+            text-align: right;
+            padding-top: 7px;
+        }
+
+        .card-title {
+            font-size: 14px;
+            padding: 5px 0;
+        }
+
+        .media-left {
+            padding-right: 5px;
+        }
+
+        .media-right {
+            padding-left: 5px;
+        }
+    }
+
+    .topics {
+        .custom-item {
+            [col-2] {
+                max-width: 50px;
+            }
+        }
+    
+        .stats {
+            ion-row, ion-col {
+                margin: 0;
+                padding: 0;
+            }
+            .liked {
+                color: color($colors, primary);
+            }
+            button {
+                color: #666;
+            }
+    
+            .liked-users {
+                height: 20px;
+                line-height: 20px;
+            }
+            .liked-user {
+                width: 20px;
+                height: 20px;
+                // margin-top: 5px;
+                border-radius: 50%;
+                // margin-top: 5px;
+            }
+            .liked-tip {
+                // margin-top: 10px;
+                font-size: 12px;
+                display: inline-block;
+                color: #999;
+            }
+        }
+    
+        .assets {
+            margin-top: 10px;
+            .asset-image {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    
+        .topic-body {
+            .time {
+                margin-top: 5px;
+                margin-bottom: 5px;
+                font-size: 12px;
+                font-size: #999;
+            }
+            .body {
+                color: #333;
+                font-size: 12px;
+            }
+        }
+    
+        .media-player {
+    
+            // 以下为自定义loading spinner样式
+            vg-scrub-bar {
+                position: absolute;
+                bottom: 0;
+                height: 1px;
+                vg-scrub-bar-current-time,vg-scrub-bar-buffering-time {
+                    height: 1px;
+                }
+            }
+    
+            .vg-buffering .bufferingContainer {
+                margin-top: -25px;
+            }
+    
+            .vg-buffering .loadingSpinner {
+                border: 2px solid rgba(255, 255, 255, 1);
+                border-top: 2px solid rgba(0, 0, 0, 0);
+                border-left: 2px solid rgba(0, 0, 0, 0);
+            }
+    
+            .custom-play-button {
+                position: absolute;
+                z-index: 200;
+                width: 100%;
+                height: 100%;
+                // line-height: 50%;
+                text-align: center;
+                // padding-top: 20px;
+                .play-button {
+                    font-size: 42px;
+                    margin-top: 22px;
+                }
+            }
+        }
+    
+        .comments {
+            padding: 5px;
+            margin-top: 10px;
+            background: rgb(247,247,247);
+            .comment {
+                font-size: 12px;
+                margin: 0;
+                padding: 0;
+                .user {
+                    color: #333;
+                }
+                color: #666;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,38 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<!-- <ion-header no-border>
+
+    <ion-navbar color="white">
+      <ion-title>用户登录</ion-title>
+    </ion-navbar>
+  
+  </ion-header> -->
+  
+  <ion-content style="background: white;">
+    <!-- <ion-card *ngIf="body"> -->
+      <!-- <ion-card-header>
+        <p class="heading" text-wrap>使用协议</p>
+      </ion-card-header> -->
+      <!--<ion-card-body>-->
+      <!-- <div class="pages" [innerHTML]="body" padding></div> -->
+      <!--</ion-card-body>-->
+    <!-- </ion-card> -->
+    <div class="login-box">
+      <img src="assets/imgs/cys_logo.jpg">
+      <p class="slogan">爱生活，爱音乐</p>
+      
+      <button ion-button block (click)="doLogin();">{{isWeiXin ? '微信登录' : 'QQ登录'}}</button>
+      <p class="user-agreements">登录即表示同意<span class="agreement" tappable (click)="openPage();">《用户使用协议》</span></p>
+    </div>
+  
+  </ion-content>
+  <!-- <ion-footer style="background-color: white;">
+    <div padding><button ion-button block (click)="doLogin()" [disabled]="!body">
+      {{isWeiXin ? '微信登录' : 'QQ登录'}}
+    </button></div>
+  </ion-footer> -->

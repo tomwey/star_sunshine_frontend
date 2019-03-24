@@ -1,0 +1,42 @@
+<!--
+  Generated template for the UserProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar>
+    <ion-title>用户资料</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="user-info" *ngIf="!!user">
+
+    <div class="portal">
+      <p class="help-text">长按保存或分享此二维码，扫码领红包！</p>
+      <img [src]="user.qrcode_url" class="qrcode" />
+      
+      <div class="portal-url">
+        <p class="help-text">复制如下地址，然后分享给朋友，打开领红包！</p>
+        <ion-item>
+          <h2 text-wrap>{{user.portal_url}}</h2>
+          <button ion-button item-right (click)="copy();">复制</button>
+        </ion-item>
+      </div>
+
+    </div>
+    <ion-list>
+      <ion-item>
+        昵称
+        <ion-note item-right>{{user.nickname}}</ion-note>
+      </ion-item>
+      <ion-item>
+        手机
+        <ion-note item-right>{{user.mobile || '未绑定'}}</ion-note>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

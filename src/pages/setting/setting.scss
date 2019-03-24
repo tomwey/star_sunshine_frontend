@@ -1,0 +1,154 @@
+page-setting {
+    .user-caption {
+        // ion-item {
+        //     background: transparent;
+        //     h2 {
+        //         color: white;
+        //     }
+
+        // }
+        // background: color($colors, wechat);
+        // margin-bottom: 30px;
+        padding: 20px 0;
+        background: white;
+        .stat-box {
+            background: white;
+            ion-row, ion-col {
+                text-align: center;
+                margin: 0;
+                padding: 0;
+            }
+            .stats {
+                padding-top: 15px;
+
+                p {
+                    margin: 0;
+                    padding: 0;
+                }
+                .label {
+                    color: #999;
+                    font-size: 14px;
+                }
+                .value {
+                    color: #333;
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+
+    ion-note {
+        font-size: 14px;
+    }
+
+    .item-block {
+        font-size: 14px;
+    }
+
+    .list-ios > .item-block:first-child {
+        border-top: 0;
+    }
+
+    .list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block {
+        border-bottom: 0;
+    }
+
+    .list-ios {
+        margin-bottom: 10px;
+    }
+
+    .cell-box {
+        padding: 15px;
+        padding-bottom: 10px;
+        text-align: center;
+        h3, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        p {
+            font-size: 14px;
+            color: #999;
+        }
+    }
+
+    .balance {
+        text-align: left;
+        .vip {
+            margin-top: 15px;
+            color: color($colors, primary);
+        }
+        .money {
+            font-size: 18px;
+            font-weight: normal;
+            font-family: 'PingFang SC';
+        }
+    }
+
+    .operations {
+        text-align: right;
+
+        .charge-button {
+            // margin-top: 5px;
+            margin-top: 0;
+            width: 70px;
+            font-size: 12px;
+            // padding: 5px 0;
+        }
+
+        .vip-button {
+            margin-top: 5px;
+            width: 70px;
+            font-size: 12px;
+        }
+    }
+
+    .wallet {
+        // font-size: 18px;
+        color: color($colors, primary);
+    }
+
+    .trade {
+        // font-size: 18px;
+        color: #F6A623;
+
+    }
+
+    .faq {
+        // font-size: 18px !important;
+        color: #4990E2;
+    }
+
+    .agreement {
+        color: #8B572A;
+        font-size: 22px;
+    }
+
+    .about {
+        // font-size: 18px;
+        color: rgb(120,120,120);
+    }
+
+    .custom-item {
+        margin: 0;
+        padding: 0;
+        padding-left: 30px;
+
+        .oper-btn {
+            width: 70px;
+            font-size: 14px;
+        }
+
+        .money {
+            font-size: 2rem;
+            color: #333;
+            font-family: 'PingFang SC';
+            font-weight: normal;
+        }
+    }
+
+    .item-ios.item-block .item-inner {
+        border-bottom: 0;
+    }
+    
+}

@@ -1,0 +1,112 @@
+$font-path: '../assets/fonts';
+
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: 'iconfont';
+  src:  url('#{$font-path}/iconfont.eot?17k4js');
+  src:  url('#{$font-path}/iconfont.eot?17k4js#iefix') format('embedded-opentype'),
+    url('#{$font-path}/iconfont.ttf?17k4js') format('truetype'),
+    url('#{$font-path}/iconfont.woff?17k4js') format('woff'),
+    url('#{$font-path}/iconfont.svg?17k4js#iconfont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.iconfont {
+  font-family: 'iconfont' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  //   /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  speak: none;
+}
+
+.ion-ios-icon_redpack-outline:before, 
+.ion-ios-icon_redpack:before, 
+.ion-md-icon_redpack-outline:before, 
+.ion-md-icon_redpack:before, 
+.ion-ios-icon_faq-outline:before, 
+.ion-ios-icon_faq:before, 
+.ion-md-icon_faq-outline:before, 
+.ion-md-icon_faq:before,
+.ion-ios-icon_trade-outline:before, 
+.ion-ios-icon_trade:before, 
+.ion-md-icon_trade-outline:before, 
+.ion-md-icon_trade:before,
+.ion-ios-icon_about-outline:before, 
+.ion-ios-icon_about:before, 
+.ion-md-icon_about-outline:before, 
+.ion-md-icon_about:before,
+.ion-ios-icon_wallet-outline:before, 
+.ion-ios-icon_wallet:before, 
+.ion-md-icon_wallet-outline:before, 
+.ion-md-icon_wallet:before,
+.ion-ios-icon_my_setting-outline:before, 
+.ion-ios-icon_my_setting:before, 
+.ion-md-icon_my_setting-outline:before, 
+.ion-md-icon_my_setting:before
+{
+  @extend .iconfont;
+}
+
+.ion-ios-icon_my_setting:before, 
+.ion-md-icon_my_setting:before,
+.ion-ios-icon_my_setting-outline:before, 
+.ion-md-icon_my_setting-outline:before
+{
+  content: "\e900";
+  font-size: 24px;
+  padding-top: 2px;
+}
+
+.ion-ios-icon_redpack:before, 
+.ion-md-icon_redpack:before,
+.ion-ios-icon_redpack-outline:before, 
+.ion-md-icon_redpack-outline:before
+{
+  content: "\e901";
+  font-size: 22px;
+}
+
+.ion-ios-icon_faq:before, 
+.ion-md-icon_faq:before,
+.ion-ios-icon_faq-outline:before, 
+.ion-md-icon_faq-outline:before
+{
+  content: "\e902";
+  font-size: 18px;
+}
+
+.ion-ios-icon_trade:before, 
+.ion-md-icon_trade:before,
+.ion-ios-icon_trade-outline:before, 
+.ion-md-icon_trade-outline:before
+{
+  content: "\e903";
+  font-size: 24px;
+}
+
+.ion-ios-icon_about:before, 
+.ion-md-icon_about:before,
+.ion-ios-icon_about-outline:before, 
+.ion-md-icon_about-outline:before
+{
+  content: "\e904";
+  font-size: 18px;
+}
+
+.ion-ios-icon_wallet:before, 
+.ion-md-icon_wallet:before,
+.ion-ios-icon_wallet-outline:before, 
+.ion-md-icon_wallet-outline:before
+{
+  content: "\e905";
+  font-size: 18px;
+}

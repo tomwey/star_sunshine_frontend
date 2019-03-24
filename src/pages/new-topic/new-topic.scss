@@ -1,0 +1,99 @@
+page-new-topic {
+    .assets {
+        ion-row, ion-col {
+            text-align: center;
+        }
+    }
+
+    .asset-button {
+        font-size: 14px;
+        color: #666;
+        border: 1px dashed #ccc;
+        width: 80px;
+        
+        margin: 0 auto;
+        padding: 10px 0;
+        ion-icon {
+            font-size: 24px;
+        }
+        p {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    .asset-results {
+        padding-top: 5px;
+        .asset {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            // background: white;
+            .close-btn {
+                position: absolute;
+                top: -25px;
+                right: -10px;
+            }
+            img {
+                max-width: 80px;
+                width: 80px;
+                height: 80px;
+            }
+            .add-btn {
+                display: block;
+                width: 80px;
+                height: 80px;
+                line-height: 80px;
+                margin: 0 auto;
+                text-align: center;
+                color: #666;
+                border: 0.55px dashed #ccc;
+            }
+        }
+
+        .video-preview {
+            width: calc(100% - 30px);
+            margin: 0 auto;
+            height: 200px;
+            margin-top: -20px;
+            background: black;
+            position: relative;
+            // padding: 0 15px;
+            video {
+                width: 100%;
+                height: 100%;
+            }
+            .close-btn {
+                position: absolute;
+                z-index: 200;
+                top: -25px;
+                right: -25px;
+            }
+        }
+    }
+
+    .audio-preview {
+        margin-top: -20px;
+        position: relative;
+        padding: 20px;
+        .close-btn {
+            position: absolute;
+            z-index: 200;
+            top: -5px;
+            right: -5px;
+        }
+    }
+
+    .audio-box {
+        background: rgb(247,247,247);
+        .item-inner {
+            border-bottom: 0!important;
+        }
+        
+        ion-icon {
+            font-size: 28px;
+            color: #666;
+        }
+    }
+}

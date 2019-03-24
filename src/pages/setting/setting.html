@@ -1,0 +1,97 @@
+<!--
+  Generated template for the SettingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- s -->
+
+<ion-content>
+  <div class="user-caption" *ngIf="!!user">
+    <ion-item>
+        <ion-avatar item-left>
+        <img [src]="user.avatar || 'assets/imgs/default_avatar.png'" />
+        </ion-avatar>
+      <h2>{{user.nickname}}</h2>
+      <p></p>
+      <ion-note item-end>
+        <button ion-button small (click)="openZone(user);">个人主页</button>
+      </ion-note>
+    </ion-item>
+   <div class="stat-box">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4>
+          <div class="stats" tappable (click)="openZone(user, 'like');">
+            <p class="value">{{user.likes_count}}</p>
+            <p class="label">喜欢</p>
+          </div>
+        </ion-col>
+        <ion-col col-4>
+          <div class="stats" tappable (click)="openZone(user, 'follower');">
+            <p class="value">{{user.follows_count}}</p>
+            <p class="label">粉丝</p>
+          </div>
+        </ion-col>
+        <ion-col col-4>
+          <div class="stats" tappable (click)="openZone(user, 'follow');">
+            <p class="value">{{user.following_count}}</p>
+            <p class="label">关注</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  </div>
+  <ion-list></ion-list>
+  <ion-list>
+    <!-- 交易明细 -->
+    <button ion-item (click)="gotoHistory();">
+        <ion-icon name="ios-list-box-outline" class="trade" item-left></ion-icon>
+        历史播放
+      </button>
+    <!-- 钱包 -->
+    <button ion-item (click)="openPage('校园招募', 'campus_recruiting');">
+      <ion-icon name="ios-microphone-outline" class="wallet" item-left></ion-icon>
+      校园招募
+    </button>
+  </ion-list>
+  <ion-list></ion-list>
+    <ion-list>
+    <!-- 常见问题 -->
+    <button ion-item (click)="openPage('常见问题', 'faq');">
+      <ion-icon name="icon_faq" class="faq" item-left></ion-icon>
+      常见问题
+    </button>
+    <!-- 用户协议 -->
+    <button ion-item (click)="openPage('用户协议', 'user_agreement');">
+      <ion-icon name="ios-paper-outline" class="agreement" item-left></ion-icon>
+      用户协议
+    </button>
+
+    <!-- 关于 -->
+    <button ion-item (click)="openPage('关于', 'about');">
+      <ion-icon name="icon_about" class="about" item-left></ion-icon>
+      关于
+    </button>
+    
+  </ion-list>
+  <!-- <ion-list></ion-list> -->
+  <!-- <ion-list>
+    <ion-item>
+      QQ登录
+      <ion-note item-right>已绑定</ion-note>
+    </ion-item>
+    <ion-item>
+        微信登录
+        <ion-note item-right>未绑定</ion-note>
+      </ion-item>
+  </ion-list> -->
+  <!-- <ion-list></ion-list> -->
+  <!-- <ion-list>
+    <button ion-item detail-none style="text-align:center; font-size: 14px; color: #BD5450;" (click)="logout();">
+      退出登录
+    </button>
+  </ion-list> -->
+
+</ion-content>

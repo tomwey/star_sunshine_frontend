@@ -1,0 +1,173 @@
+<!--
+  Generated template for the TopicListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="white">
+    <div start class="bar-items">
+      <span class="custom-btn" 
+        [class.active]="dataType === 'latest'" tappable 
+        (click)="selectItem('latest');">最新</span>
+      <span class="custom-btn" tappable
+        [class.active]="dataType === 'suggest'"
+        (click)="selectItem('suggest');">推荐</span>
+      <span class="custom-btn" tappable
+        [class.active]="dataType === 'following'"
+        (click)="selectItem('following');">关注</span>
+    </div>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="newTopic();">
+        <ion-icon name="ios-add-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <div class="empty-error-box" *ngIf="!!error">
+    {{error}}
+  </div>
+  <ion-list>
+    <ion-item tappable (click)="openTopic(topic);" class="custom-item" *ngFor="let topic of topics">
+      <ion-row>
+        <ion-col col-2>
+          <ion-avatar>
+            <img src="{{topic.owner?.avatar || 'assets/imgs/default_avatar.png'}}" tappable 
+              (click)="openZone($event,topic.owner);">
+          </ion-avatar>
+        </ion-col>
+        <ion-col col-10>
+          <div class="topic-body">
+            <h2>{{topic.owner?.name}}</h2>
+            <p class="time">{{topic.time | timeAgo:'YYYY-MM-DD HH:mm:ss'}}</p>
+            <p class="body">{{topic.content}}</p>
+            <div class="assets" *ngIf="topic.type">
+              <ion-row *ngIf="topic.type == 1">
+                <ion-col col-4 *ngFor="let asset of topic.files">
+                  <img [src]="asset.url" class="asset-image" #myImage (click)="presentImage($event,myImage)">
+                </ion-col>
+              </ion-row>
+              <!-- 作品类型 -->
+              <div class="media-player" *ngIf="topic.type == 0 && topic.media">
+                  <vg-player (onPlayerReady)="onPlayerReady($event)">
+                      <div class="custom-play-button" tappable (click)="  
+                        currentMedia && currentMedia !== myMedia && currentMedia.pause(); 
+                        media.playing ? myMedia.pause() : myMedia.play(); 
+                        currentMedia = myMedia;
+                        currentMedia.srcMedia = topic.media; 
+                        topic.media.playing = !topic.media.playing;
+            
+                        $event.stopPropagation();">
+                        <button ion-button clear color="white" 
+                          class="play-button">
+                          <ion-icon name="play" *ngIf="currentMedia !== myMedia || !currentMedia.srcMedia?.playing"></ion-icon>
+                        </button>
+                      </div>
+            
+                      <vg-buffering></vg-buffering>
+            
+                      <vg-scrub-bar [vgSlider]="false" style="pointer-events: none;">
+                        <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                        <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+                      </vg-scrub-bar>
+                      
+                      <video #myMedia [vgMedia]="myMedia" 
+                        playsinline webkit-playsinline
+                        x-webkit-airplay="true" 
+                        x5-video-player-type="h5"
+                        x5-video-orientation="h5"
+            
+                        id="vid-{{topic.media.id}}"
+                        poster="{{topic.media.cover}}" 
+                        src="{{topic.media.media_file}}"></video>
+                    </vg-player>
+                  </div>
+                <!-- 音频 -->
+                <div class="audios" *ngIf="topic.type == 2">
+                  <ion-item class="audio-box" *ngFor="let audio of topic.files">
+                    <ion-thumbnail item-left>
+                      <img src="assets/imgs/cys_logo.png">
+                    </ion-thumbnail>
+                    <ion-note item-right>
+                      <button ion-button clear (click)="playAudio($event, audio);">
+                        <ion-icon name="{{audio.playing ? 'md-pause' : 'md-play'}}"></ion-icon>
+                      </button>
+                    </ion-note>
+                  </ion-item>
+                  <!-- <audio [src]="audio.url" controls *ngFor="let audio of topic.files"></audio> -->
+                </div>
+                <!-- 视频 -->
+                <div class="video media-player" *ngIf="topic.type == 3">
+                  <vg-player *ngFor="let vid of topic.files">
+                      <div class="custom-play-button" tappable (click)="  
+                      currentMedia2 && currentMedia2 !== myMedia2 && currentMedia2.pause(); 
+                      currentMedia2 = myMedia2;
+                      currentMedia2.play();
+                      $event.stopPropagation();">
+                      <button ion-button clear color="white" 
+                        class="play-button">
+                        <ion-icon name="play" *ngIf="currentMedia2 !== myMedia2"></ion-icon>
+                      </button>
+                    </div>
+
+                    <vg-buffering></vg-buffering>
+          
+                    <vg-scrub-bar [vgSlider]="false" style="pointer-events: none;">
+                      <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                      <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+                    </vg-scrub-bar>
+                    
+                    <video #myMedia2 [vgMedia]="myMedia2" 
+                      playsinline webkit-playsinline
+                      x-webkit-airplay="true" 
+                      x5-video-player-type="h5"
+                      x5-video-orientation="h5"
+          
+                      src="{{vid.url}}"></video>
+                  </vg-player>
+                </div>
+            </div>
+            <div class="stats">
+              <ion-row>
+                <ion-col col-8>
+                  <div class="liked-users" *ngIf="topic.likes_count !== 0">
+                      <img src="{{user.avatar || 'assets/imgs/default_avatar.png'}}"
+                      *ngFor="let user of topic.liked_users" class="liked-user">
+                      <span class="liked-tip">{{topic.likes_count}}人都说赞!</span>
+                  </div>
+                </ion-col>
+                <ion-col col-4 style="text-align:right;">
+                    <button ion-button icon-start clear small (click)="like($event,topic);">
+                      <ion-icon name="md-heart" [class.liked]="topic.liked"></ion-icon>
+                      <div>{{topic.likes_count == 0 ? '' : topic.likes_count}}</div>
+                    </button>
+                    <button ion-button icon-start clear small>
+                      <ion-icon name="text"></ion-icon>
+                      <div>{{topic.comments_count == 0 ? '' : topic.comments_count}}</div>
+                    </button>
+                </ion-col>
+              </ion-row>
+            </div>
+            <div class="comments" *ngIf="topic.comments_count > 0">
+              <p class="comment" *ngFor="let comment of topic.latest_comments">
+                <span class="user">{{comment.user?.nickname}}</span>: {{comment.content}}
+              </p>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)" [enabled]="hasMore">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="正在加载...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

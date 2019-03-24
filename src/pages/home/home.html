@@ -1,0 +1,168 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header no-border>
+
+  <ion-navbar color="white">
+    <ion-title>创艺生</ion-title>
+  </ion-navbar>
+
+</ion-header> -->
+
+<ion-content>
+  <div class="empty-error-box" *ngIf="!!error">
+    {{error.message || error}}
+  </div>
+  <div class="entry-data" *ngIf="!!entryData">
+    <!-- Banner -->
+    <div class="banners">
+      <ion-slides #slides *ngIf="entryData.banners.length > 0" 
+        [loop]="entryData.banners.length > 1" 
+        [pager]="entryData.banners.length > 1" 
+        (ionSlideAutoplayStop)="autoPlay()"
+        autoplay="3000">
+        <ion-slide *ngFor="let banner of entryData.banners">
+          <div class="banner-btn" (tap)="openBanner(banner)">
+            <img [src]="banner.image">
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+
+    <!-- 投票区 -->
+    <div class="box">
+      <h2>正在投票
+        <span class="more" tappable (click)="vote();">进入投票 <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+        </span>
+      </h2>
+      <div class="votes" *ngIf="entryData.vote">
+          <table>
+              <tr *ngFor="let item of entryData.vote.vote_items; let i = index;">
+                <td class="base">
+                  <h4>0{{i+1}} {{item.perform.school}} {{item.perform.name}}</h4>
+                  <div class="progressbar">
+                    <div class="progressbar-inner" [style.width]="item.percent + '%'"></div>
+                  </div>
+                </td>
+                <td class="tickets">
+                    {{item.vote_count}}<span class="unit">票</span>
+                </td>
+                <td class="percent">
+                    {{item.percent}}<span class="unit">%</span>
+                </td>
+              </tr>
+            </table>
+      </div>
+    </div>
+    
+    <!-- 功能区 -->
+    <div class="features">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4>
+            <div class="feature" tappable (click)="openPerformers()">
+              <img src="assets/imgs/icon_music_person.png">
+              <h4>艺人库</h4>
+            </div>
+          </ion-col>
+          <ion-col col-4>
+            <div class="feature" tappable (click)="openVotes()">
+                <img src="assets/imgs/icon_vote.png">
+                <h4>投票</h4>
+            </div>
+          </ion-col>
+          <ion-col col-4>
+            <div class="feature" tappable (click)="openMXJJ()">
+              <img src="assets/imgs/icon_mxjj.png">
+              <h4>梦想基金</h4>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <!-- 校园mv -->
+    <div class="box" *ngFor="let sec of entryData.sections">
+      <h2>{{sec.name}}
+          <span class="more" tappable (click)="openMoreMV();">更多 <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+          </span>
+      </h2>
+      <div class="media">
+        <ion-card tappable (click)="openMedia(sec.list[0]);">
+          <img [src]="sec.list[0].cover" />
+          <ion-row>
+            <ion-col col-8>
+              <p class="title">{{sec.list[0].title}}</p>
+            </ion-col>
+            <ion-col col-4>
+              <p class="view-count">
+                <ion-icon name="videocam"></ion-icon> 
+                <span class="digit">{{sec.list[0].views_count  | num2str}}</span></p>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+        <ion-row>
+          <ion-col col-6 class="media-left">
+              <ion-card tappable (click)="openMedia(sec.list[1]);">
+                <img [src]="sec.list[1].cover" />
+                <ion-row>
+                    <ion-col col-6>
+                      <p class="title">{{sec.list[1].title}}</p>
+                    </ion-col>
+                    <ion-col col-6>
+                      <p class="view-count">
+                        <ion-icon name="videocam"></ion-icon> 
+                        <span class="digit">{{sec.list[1].views_count  | num2str}}</span></p>
+                    </ion-col>
+                  </ion-row>
+              </ion-card>
+          </ion-col>
+          <ion-col col-6 class="media-right">
+              <ion-card tappable (click)="openMedia(sec.list[2]);">
+                <img [src]="sec.list[2].cover" />
+                <ion-row>
+                    <ion-col col-6>
+                      <p class="title">{{sec.list[2].title}}</p>
+                    </ion-col>
+                    <ion-col col-6>
+                        <p class="view-count"><ion-icon name="videocam"></ion-icon> 
+                        <span class="digit">{{sec.list[2].views_count | num2str}}</span></p>
+                    </ion-col>
+                  </ion-row>
+              </ion-card>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+
+    <!-- 男神女神 -->
+    <div class="box">
+      <h2>男神女神
+          <span class="more" tappable (click)="openPerformers();">更多 <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+          </span>
+      </h2>
+      <div class="performers">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6 *ngFor="let perform of entryData.performers">
+              <div class="performer">
+                <!-- <ion-avatar> -->
+                  <img [src]="perform.avatar" tappable (click)="openZone(perform);"/>
+                <!-- </ion-avatar> -->
+                <h4>{{perform.name}}</h4>
+                <p>{{perform.school}}</p>
+                <button ion-button small (click)="follow(perform);" [class.followed]="perform.followed">{{perform.followed ? '已关注' : '关注'}}</button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+
+    <!-- <div class="box"></div> -->
+  </div>
+  
+</ion-content>

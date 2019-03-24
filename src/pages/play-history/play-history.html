@@ -1,0 +1,44 @@
+<!--
+  Generated template for the PlayHistoryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>MV播放历史</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="empty-error-box" *ngIf="!!error">
+    {{error.message || error}}
+  </div>
+  <div class="medias">
+    <ion-row>
+      <ion-col col-6 *ngFor="let item of data; let i = index;" [class.odd]="i % 2 == 1" [class.even]="i % 2 == 0">
+          <ion-card tappable (click)="openMedia(item.media);">
+            <img [src]="item.media.cover" />
+            <ion-row>
+                <ion-col col-6>
+                  <p class="title">{{item.media.title}}</p>
+                </ion-col>
+                <ion-col col-6>
+                  <p class="view-count">
+                    <ion-icon name="videocam"></ion-icon> 
+                    <span class="digit">{{item.media.views_count  | num2str}}</span></p>
+                </ion-col>
+              </ion-row>
+          </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)" [enabled]="hasMore">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="正在加载...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,165 @@
+<!--
+  Generated template for the VoteDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="white">
+    <ion-title>创艺生投票入口</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content style="background: white;">
+  <div class="vote">
+    <div class="base-info">
+      <h2 class="title">{{vote.title}}</h2>
+      <p class="time">{{vote.time}}</p>
+    </div>
+    <div class="body">
+      <div class="html" [innerHTML]="vote.body"></div>
+      <div class="vote-item-info" *ngFor="let voteItem of vote.vote_items">
+        <div class="intro" [innerHTML]="voteItem.body"></div>
+        <div class="media-player" *ngIf="!!voteItem.video_url">
+            <vg-player>
+                
+                <vg-overlay-play>
+                  
+                </vg-overlay-play>
+      
+                <vg-buffering></vg-buffering>
+      
+                  <vg-scrub-bar [vgSlider]="false" style="pointer-events: none;">
+                      <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                      <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+                  </vg-scrub-bar>
+                
+                <video #myMedia [vgMedia]="myMedia" 
+                  playsinline webkit-playsinline
+                  x-webkit-airplay="true" 
+                  x5-video-player-type="h5"
+                  x5-video-orientation="h5"
+      
+                  id="vid-{{voteItem.id}}"
+                  poster="" 
+                  src="{{voteItem.video_url}}"></video>
+              </vg-player>
+            </div>
+      </div>
+    </div>
+    <div class="vote-items box" *ngIf="vote.type == 2">
+      <h2>—— 为您喜欢的艺人投上一票吧 ——</h2>
+      <div class="performers">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6 *ngFor="let item of vote.vote_items">
+              <div class="performer">
+                <!-- <ion-avatar> -->
+                  <img [src]="item.perform.avatar" tappable (click)="openZone(item.perform);"/>
+                <!-- </ion-avatar> -->
+                <h4>{{item.perform.name}}</h4>
+                <p>{{item.perform.school}}</p>
+                <p>票数: {{item.vote_count}}, 占比: {{item.percent}}%</p>
+                <button ion-button small (click)="sendVote(item);" [class.voted]="item.voted">{{item.voted ? '已投票' : '投票'}}</button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+    <div class="vote-items" *ngIf="vote.type == 1">
+      <h2>—— 投票区 ——</h2>
+      <ion-card>
+        <ion-card-header>
+          这期的最高分给谁？({{vote.type == 1 ? '单选' : '多选'}})
+        </ion-card-header>
+        <ion-list *ngIf="!vote.voted">
+          <ion-item *ngFor="let item of vote.vote_items; let i = index;" tappable (click)="selectItem(item);">
+            <ion-icon name="{{item.selected ? 'ios-radio-button-on-outline' : 'ios-radio-button-off-outline'}}" [class.selected]="item.selected"></ion-icon>
+            0{{i+1}} {{item.perform.school}} {{item.perform.name}}
+          </ion-item>
+        </ion-list>
+        <div *ngIf="vote.voted" class="vote-result">
+          <table>
+            <tr *ngFor="let item of vote.vote_items; let i = index;">
+              <td class="base">
+                <h4>0{{i+1}} {{item.perform.school}} {{item.perform.name}}</h4>
+                <div class="progressbar">
+                  <div class="progressbar-inner" [style.width]="item.percent + '%'"></div>
+                </div>
+              </td>
+              <td class="tickets">
+                  {{item.vote_count}}<span class="unit">票</span>
+              </td>
+              <td class="percent">
+                  {{item.percent}}<span class="unit">%</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <ion-card-header>
+          <p class="vote-btn" tappable (click)="commit();">{{vote.voted ? '你已投票' : 
+            vote.expired ? '投票已过期' : '投票'  
+          }}</p>
+        </ion-card-header>
+      </ion-card>
+      <p class="vote-warn">注：投票截止时间为{{vote.expire_time}}</p>
+    </div>
+    <div class="vote-stats">
+      <ion-row>
+        <ion-col col-6>
+          <span class="view-count">阅读 {{vote.view_count}}</span>
+        </ion-col>
+        <ion-col col-6 style="text-align:right;">
+          <button ion-button icon-start clear small (click)="like($event,vote);">
+            <ion-icon name="md-heart" [class.liked]="vote.liked"></ion-icon>
+            <div>{{vote.likes_count  | num2str}}</div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+  <div class="comments">
+    <h2 class="title">精选评论<span class="reply-btn" tappable (click)="writeComment();">写评论</span></h2>
+    <div class="empty-error-box" *ngIf="!!error">
+      {{error}}
+    </div>
+    <ion-list>
+      <ion-item *ngFor="let comment of comments">
+        <ion-row>
+          <ion-col col-2>
+              <ion-avatar>
+                  <img [src]="comment.user.avatar || 'assets/imgs/default_avatar.png'">
+                </ion-avatar>
+          </ion-col>
+          <ion-col col-10>
+              <div class="body">
+                <div tappable (click)="reply(comment);">
+                  <h2>{{comment.user.nickname}}</h2>
+                  <p class="text">{{comment.content}}</p>
+                  <p class="time">{{comment.time | timeAgo:'YYYY-MM-DD HH:mm:ss'}}</p>
+                </div>
+                <div class="replies" *ngIf="comment.replies.length > 0">
+                  <p class="reply" tappable (click)="reply(comment, rep.from_user.id);" *ngFor="let rep of comment.replies" text-wrap>
+                    <span class="name">{{rep.from_user.nickname}}{{rep.to_user ? (' 回复 ' + rep.to_user.nickname )  : ''}}:</span> {{rep.content}}
+                  </p>
+                </div>
+              </div>
+          </ion-col>
+        </ion-row>
+        
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)" [enabled]="hasMore">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="正在加载...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

@@ -1,0 +1,51 @@
+page-play-history {
+    .medias {
+        ion-row, ion-col {
+            margin: 0;
+            padding: 0;
+        }
+        ion-card {
+            margin: 0;
+            width: 100%;
+            margin-top: 10px;
+            box-shadow: none;
+        }
+
+        .odd {
+            padding-left: 5px;
+            padding-right: 10px;
+        }
+
+        .even {
+            padding-left: 10px;
+            padding-right: 5px;
+        }
+
+        .title, .view-count {
+            font-size: 14px;
+            color: #666;
+            padding: 5px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .view-count {
+            text-align: right;
+            padding-top: 7px;
+        }
+
+        .card-title {
+            font-size: 14px;
+            padding: 5px 0;
+        }
+
+        .media-left {
+            padding-right: 5px;
+        }
+
+        .media-right {
+            padding-left: 5px;
+        }
+    }
+}

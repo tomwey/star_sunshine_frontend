@@ -1,0 +1,127 @@
+page-topic-detail {
+    .topic {
+        background: white;
+        padding: 15px;
+        .body {
+            padding: 5px 15px;
+        }
+    }
+    .comments {
+        padding: 15px;
+        background: white;
+        .title {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            color: #333;
+            font-weight: normal;
+            // padding: 5px 0;
+            padding-bottom: 15px;
+            border-bottom: 0.55px solid #e6e6e6;
+        }
+
+        .empty-error-box {
+            margin-top: 20px;
+            border: 0;
+            padding: 20px;
+        }
+
+        ion-row, ion-col {
+            margin: 0;
+            padding: 0;
+        }
+
+        .replies {
+            background-color: rgb(247,247,247);
+            padding: 5px;
+            margin-top: 10px;
+            .reply {
+                color: #666;
+            }
+        }
+
+        .msg-area {
+            .text {
+                font-size: 12px;
+                color: #333;
+            }
+            .time {
+                font-size: 12px;
+                color: #999;
+            }
+        }
+        // margin-top: 10px;
+    }
+    
+    .input-box {
+        padding: 5px 15px;
+        padding-right: 5px;
+    }
+
+    .liked {
+        color: color($colors, primary);
+    }
+
+    .liked-area {
+        ion-row, ion-col {
+            margin: 0;
+            padding: 0;
+        }
+        .liked {
+            color: color($colors, primary);
+        }
+        button {
+            color: #666;
+        }
+
+        .liked-user {
+            width: 20px;
+            height: 20px;
+            // margin-top: 5px;
+            border-radius: 50%;
+        }
+    }
+
+    .media-player {
+
+        // 以下为自定义loading spinner样式
+        vg-scrub-bar {
+            position: absolute;
+            bottom: 0;
+            height: 1px;
+            vg-scrub-bar-current-time,vg-scrub-bar-buffering-time {
+                height: 1px;
+            }
+        }
+
+        .vg-buffering .bufferingContainer {
+            margin-top: -25px;
+        }
+
+        .vg-buffering .loadingSpinner {
+            border: 2px solid rgba(255, 255, 255, 1);
+            border-top: 2px solid rgba(0, 0, 0, 0);
+            border-left: 2px solid rgba(0, 0, 0, 0);
+        }
+
+        .custom-play-button {
+            position: absolute;
+            z-index: 200;
+            width: 100%;
+            height: 100%;
+            // line-height: 50%;
+            text-align: center;
+            // padding-top: 20px;
+            .play-button {
+                font-size: 42px;
+                margin-top: 22px;
+            }
+        }
+    }
+
+    .followed {
+        background: white;
+        color: color($colors, primary);
+        border: 0.55px solid color($colors, primary);
+    }
+}

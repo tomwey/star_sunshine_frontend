@@ -1,0 +1,70 @@
+$font-path: '../assets/fonts';
+
+@font-face {
+  font-family: 'cys_icon';
+  src:  url('#{$font-path}/cys_icon.eot?yhecjn');
+  src:  url('#{$font-path}/cys_icon.eot?yhecjn#iefix') format('embedded-opentype'),
+    url('#{$font-path}/cys_icon.ttf?yhecjn') format('truetype'),
+    url('#{$font-path}/cys_icon.woff?yhecjn') format('woff'),
+    url('#{$font-path}/cys_icon.svg?yhecjn#cys_icon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.cys_icon {
+  font-family: 'cys_icon' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  //   /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  speak: none;
+}
+
+.ion-ios-cys_music-outline:before, 
+.ion-ios-cys_music:before, 
+.ion-md-cys_music-outline:before, 
+.ion-md-cys_music:before,
+.ion-ios-cys_music_circle-outline:before, 
+.ion-ios-cys_music_circle:before, 
+.ion-md-cys_music_circle-outline:before, 
+.ion-md-cys_music_circle:before,
+.ion-ios-cys_timeline-outline:before, 
+.ion-ios-cys_timeline:before, 
+.ion-md-cys_timeline-outline:before, 
+.ion-md-cys_timeline:before
+{
+  @extend .cys_icon;
+}
+
+.ion-ios-cys_music-outline:before, 
+.ion-ios-cys_music:before, 
+.ion-md-cys_music-outline:before, 
+.ion-md-cys_music:before
+{
+  content: "\e900";
+  font-size: 24px;
+  padding-top: 4px;
+}
+
+.ion-ios-cys_music_circle-outline:before, 
+.ion-ios-cys_music_circle:before, 
+.ion-md-cys_music_circle-outline:before, 
+.ion-md-cys_music_circle:before
+{
+  content: "\e901";
+}
+
+.ion-ios-cys_timeline-outline:before, 
+.ion-ios-cys_timeline:before, 
+.ion-md-cys_timeline-outline:before, 
+.ion-md-cys_timeline:before
+{
+  content: "\e902";
+  // padding-top: 1px;
+}

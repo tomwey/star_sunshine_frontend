@@ -1,0 +1,28 @@
+page-user-profile {
+    .user-info {
+        .portal {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .help-text {
+            margin: 0;
+            padding: 0;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .portal-url {
+            width: 90%;
+            padding: 20px;
+            margin: 0 auto;
+            margin-top: 30px;
+            border: 2px dashed #ccc;
+    
+            .item-ios.item-block .item-inner {
+                border-bottom: 0;
+            }
+        }
+    }
+}

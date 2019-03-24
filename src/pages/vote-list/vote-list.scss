@@ -1,0 +1,69 @@
+page-vote-list {
+    .votes {
+        // padding: 0 15px;
+        ion-card {
+            box-shadow: none;
+            padding: 10px;
+            // margin: 10px;
+            // width: calc(100% - 20px);
+        }
+        .title {
+            text-align: center;
+            border-bottom: 0.55px solid #ccc;
+            padding-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            td {
+                vertical-align: bottom;
+                font-size: 14px;
+                // background: red;
+                padding: 10px 5px;
+            }
+
+            .base {
+                width: 65%;
+            }
+
+            .tickets {
+                width: 25%;
+                font-size: 18px;
+                text-align: right;
+                color: rgb(149,149,149);
+            }
+
+            .percent {
+                width: 10%;
+                font-size: 18px;
+                text-align: right;
+                color: rgb(149,149,149);
+            }
+
+            .unit {
+                font-size: 10px;
+            }
+        }
+
+        h4 {
+            font-size: 14px;
+            font-weight: normal;
+            color: #333;
+        }
+
+        .progressbar {
+            margin-top: 8px;
+            width: 100%;
+            // border: 0.55px solid #e6e6e6;
+            height: 6px;
+            background: rgb(221,221,221);
+        }
+
+        .progressbar-inner {
+            // width: 40%;
+            height: 6px;
+            // height: 100%;
+            // margin-top: 1px;
+            background: color($colors, primary);
+        }
+    }
+}
