@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 
-import { HomePage } from '../home/home'; 
-import { MediaListPage } from '../media-list/media-list';
-import { TopicListPage } from '../topic-list/topic-list';
+import { HomePage } from '../home/home';
+// import { MediaListPage } from '../media-list/media-list';
+// import { TopicListPage } from '../topic-list/topic-list';
 
 import { SettingPage } from '../setting/setting';
+// import { Events } from 'ionic-angular';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -12,11 +13,10 @@ import { SettingPage } from '../setting/setting';
 export class TabsPage {
 
   tab1Root = HomePage;
-  tab2Root = MediaListPage;
-  tab3Root = TopicListPage;
+  tab2Root = 'PerformerListPage';
+  tab3Root = 'JobListPage';
   tab4Root = SettingPage;
 
   constructor() {
-
   }
 }

@@ -1,9 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { /*IonicPage, */NavController, NavParams, Slides, App, Content, AlertController } from 'ionic-angular';
+import { /*IonicPage, */NavController, NavParams, Slides, App, Content } from 'ionic-angular';
 import { ApiService } from '../../provider/api-service';
 import { iOSFixedScrollFreeze } from '../../provider/iOSFixedScrollFreeze';
 import { Users } from '../../provider/Users';
-import { MediaListPage } from '../media-list/media-list';
+// import { MediaListPage } from '../media-list/media-list';
 import { Media } from '../../provider/Media';
 import { Tools } from '../../provider/Tools';
 
@@ -27,13 +27,14 @@ export class HomePage {
   @ViewChild('slides') slides: Slides;
   @ViewChild(Content) content: Content;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     private api: ApiService,
     private app: App,
     private mediaServ: Media,
     private users: Users,
     private tools: Tools,
-    private alertCtrl: AlertController,
+    // private events: Events,
+    // private alertCtrl: AlertController,
     private iosFixed: iOSFixedScrollFreeze,
     public navParams: NavParams) {
   }
@@ -47,51 +48,68 @@ export class HomePage {
 
   loadData() {
     this.users.token().then(token => {
-      this.api.GET('entry', {token: token}, '正在加载')
-      .then(data => {
-        if (data && data['data']) {
-          this.entryData = data['data'];
+      this.api.GET('entry', { token: token }, '正在加载')
+        .then(data => {
+          if (data && data['data']) {
+            this.entryData = data['data'];
 
-          if (this.slides) {
-            this.slides.autoplayDisableOnInteraction = false;
+            if (this.slides) {
+              this.slides.autoplayDisableOnInteraction = false;
 
-            this.slides.ngOnDestroy();
-            this.slides.initialSlide = 0;
-            this.slides.update();
-            this.slides.ngAfterContentInit();
+              this.slides.ngOnDestroy();
+              this.slides.initialSlide = 0;
+              this.slides.update();
+              this.slides.ngAfterContentInit();
+            }
           }
-        }
-      })
-      .catch(error => {
-        this.error = error;
-      });
+        })
+        .catch(error => {
+          this.error = error;
+        });
     });
-    
+
   }
 
-  openMoreMV() {
-    this.app.getRootNavs()[0].push(MediaListPage);
-  }
-
-  openMXJJ() {
-    this.alertCtrl.create({
-      title: '筹备中',
-      subTitle: '即将上线...',
-      buttons: [
-        {
-          text: '确定'
-        }
-      ]
-    }).present();
-  }
-
-  openVotes() {
-    this.app.getRootNavs()[0].push('VoteListPage');
+  openJobs() {
+    // console.log(this.navCtrl.parent.select(2));
+    this.navCtrl.parent.select(2)
+    // this.events.publish('openjobs');
   }
 
   openPerformers() {
-    this.app.getRootNavs()[0].push('PerformerListPage');
+    // console.log(23);
+    // console.log(this.navCtrl.parent);
+    this.navCtrl.parent.select(1)
+    // this.events.publish('openperformers');
   }
+
+  openJob(job) {
+
+  }
+
+  // openMoreMV() {
+  //   this.app.getRootNavs()[0].push(MediaListPage);
+  // }
+
+  // openMXJJ() {
+  //   this.alertCtrl.create({
+  //     title: '筹备中',
+  //     subTitle: '即将上线...',
+  //     buttons: [
+  //       {
+  //         text: '确定'
+  //       }
+  //     ]
+  //   }).present();
+  // }
+
+  // openVotes() {
+  //   this.app.getRootNavs()[0].push('VoteListPage');
+  // }
+
+  // openPerformers() {
+  //   this.app.getRootNavs()[0].push('PerformerListPage');
+  // }
 
   ionViewDidEnter() {
     // console.log(this.slides);
@@ -101,10 +119,10 @@ export class HomePage {
     }
   }
 
-  ionViewDidLeave() {   
+  ionViewDidLeave() {
     // console.log(this.slides);
     if (this.slides) {
-      this.slides.stopAutoplay();  
+      this.slides.stopAutoplay();
     }
   }
 
@@ -146,7 +164,7 @@ export class HomePage {
   openBanner(banner) {
     // this.app.getRootNavs()[0].push('CloudZoneDetailPage', banner);
     // this.app.getRootNavs()[0].push('ArticlePage', { id: banner.ContentID });
-    console.log(banner);
+    // console.log(banner);
     if (banner.link) {
       window.open(banner.link);
     } else if (banner.vote) {
