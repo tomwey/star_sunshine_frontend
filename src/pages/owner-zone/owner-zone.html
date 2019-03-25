@@ -64,7 +64,7 @@
 
     <div class="users-performers" *ngIf="dataType == 'follower' || dataType == 'follow'">
       <ion-list>
-        <ion-item *ngFor="let item of data" tappable (click)="openOwnerZone((item.target || item));">
+        <ion-item *ngFor="let item of data" tappable (click)="openOwnerZone(item);">
           <ion-avatar item-start>
             <img src="{{(item.target || item).avatar || 'assets/imgs/default_avatar.png'}}">
           </ion-avatar>

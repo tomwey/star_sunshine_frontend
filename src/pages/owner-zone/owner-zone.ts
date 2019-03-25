@@ -101,7 +101,12 @@ export class OwnerZonePage {
 
   openOwnerZone(owner) {
     // console.log(owner);
-    this.app.getRootNavs()[0].push('OwnerZonePage', { owner: owner, type: owner.type || 'user' });
+    if (owner.performer) {
+      this.app.getRootNavs()[0].push('PerformerDetailPage', { performer: owner.performer });
+    } else {
+      this.app.getRootNavs()[0].push('OwnerZonePage', { owner: owner, type: owner.type || 'user' });
+    }
+
   }
 
   openMedia(media) {
