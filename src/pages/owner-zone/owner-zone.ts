@@ -38,10 +38,10 @@ export class OwnerZonePage {
   hasMore: boolean = false;
 
   currentMedia: any = null;
-  
+
   @ViewChild(Content) content: Content;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     private media: Media,
     private tools: Tools,
     private app: App,
@@ -53,10 +53,10 @@ export class OwnerZonePage {
 
     if (this.ownerType == 'user') {
       this.dataTypes = [
-        {
-          label: '动态',
-          value: 'topic',
-        },
+        // {
+        //   label: '动态',
+        //   value: 'topic',
+        // },
         {
           label: '喜欢',
           value: 'like'
@@ -77,7 +77,7 @@ export class OwnerZonePage {
         //   value: 'topic',
         // },
         {
-          label: 'MV',
+          label: '作品',
           value: 'mv'
         },
         {
@@ -93,7 +93,7 @@ export class OwnerZonePage {
   ionViewDidLoad() {
     // console.log('ionViewDidLoad OwnerZonePage');
     this.iosFixed.fixedScrollFreeze(this.content);
-    
+
     setTimeout(() => {
       this.loadData();
     }, 300);
@@ -120,7 +120,7 @@ export class OwnerZonePage {
     const action = !owner.followed ? 'create' : 'delete';
 
     let type = owner.type;
-    console.log(owner);
+    // console.log(owner);
 
     type = type.charAt(0).toUpperCase() + type.slice(1);
 
@@ -168,13 +168,13 @@ export class OwnerZonePage {
         return this.media.GetTopic('liked', this.pageNum, this.pageSize);
       case 'follower':
         return this.media.GetFollowers(
-          this.ownerType, 
-          this.owner.id, 
-          this.pageNum, 
+          this.ownerType,
+          this.owner.id,
+          this.pageNum,
           this.pageSize);
       case 'follow':
-        return  this.media.GetFollowings(this.pageNum, this.pageSize);
-    
+        return this.media.GetFollowings(this.pageNum, this.pageSize);
+
       default:
         break;
     }
@@ -204,29 +204,29 @@ export class OwnerZonePage {
           }
 
           this.totalPage = (total + this.pageSize - 1) / this.pageSize;
-          
+
           // this.totalPage = Math.floor((data.total + this.pageSize - 1) / this.pageSize); 
           this.hasMore = this.totalPage > this.pageNum;
 
           resolve(true);
         })
-        .catch(error => {
-          if (this.pageNum == 1) {
-            this.error = error.message;
-          } else {
-            this.error = null;
-            this.tools.showToast(error.message || error);
-          }
-          resolve(false);
-        });
+          .catch(error => {
+            if (this.pageNum == 1) {
+              this.error = error.message;
+            } else {
+              this.error = null;
+              this.tools.showToast(error.message || error);
+            }
+            resolve(false);
+          });
       }
-        
+
     });
   }
 
   loadMore(e) {
     if (this.pageNum < this.totalPage) {
-      this.pageNum ++;
+      this.pageNum++;
 
       this.loadData().then(() => {
         e.complete();

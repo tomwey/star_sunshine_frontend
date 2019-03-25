@@ -6,7 +6,7 @@
 -->
 <ion-header no-brder>
 
-  <ion-navbar color="white">
+  <ion-navbar color="primary">
     <ion-title>{{media.title}}</ion-title>
   </ion-navbar>
 
@@ -16,71 +16,65 @@
 <ion-content>
   <div class="media-player">
     <vg-player (onPlayerReady)="onPlayerReady($event)">
-        <!-- <div class="custom-play-button" tappable (click)="currentMedia && currentMedia !== myMedia && 
+      <!-- <div class="custom-play-button" tappable (click)="currentMedia && currentMedia !== myMedia && 
           currentMedia.pause(); media.playing ? myMedia.pause() : myMedia.play();currentMedia = myMedia;media.playing = !media.playing;$event.stopPropagation();">
           <button ion-button clear color="white" 
             class="play-button">
             <ion-icon name="play" *ngIf="currentMedia !== myMedia || !media.playing"></ion-icon>
           </button>
         </div> -->
-        <!-- <vg-overlay-play>
+      <!-- <vg-overlay-play>
         </vg-overlay-play> -->
-        <vg-buffering></vg-buffering>
+      <vg-buffering></vg-buffering>
 
-        <!-- <vg-controls> -->
-          <!-- <vg-scrub-bar [vgSlider]="false" style="pointer-events: none;">
+      <!-- <vg-controls> -->
+      <!-- <vg-scrub-bar [vgSlider]="false" style="pointer-events: none;">
               <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
               <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
           </vg-scrub-bar> -->
-        <!-- </vg-controls> -->
-        
+      <!-- </vg-controls> -->
 
-        <vg-controls [vgAutohide]="true" [vgAutohideTime]="5">
-          <vg-play-pause></vg-play-pause>
-          <vg-time-display [vgProperty]="'current'"></vg-time-display>
-          <vg-scrub-bar>
-            <vg-scrub-bar-current-time [vgSlider]="true"></vg-scrub-bar-current-time>
-            <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
-          </vg-scrub-bar>
-          <vg-time-display [vgProperty]="'total'"></vg-time-display>
-          <vg-fullscreen></vg-fullscreen>
-        </vg-controls>
-        <video #myMedia [vgMedia]="myMedia" 
-          playsinline webkit-playsinline
-          x-webkit-airplay="true" 
-          x5-video-player-type="h5"
-          x5-video-orientation="h5"
 
-          id="vid-{{media.id}}"
-          poster="{{media.cover}}" 
-          src="{{media.media_file}}"></video>
-      </vg-player>
+      <vg-controls [vgAutohide]="true" [vgAutohideTime]="5">
+        <vg-play-pause></vg-play-pause>
+        <vg-time-display [vgProperty]="'current'"></vg-time-display>
+        <vg-scrub-bar>
+          <vg-scrub-bar-current-time [vgSlider]="true"></vg-scrub-bar-current-time>
+          <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+        </vg-scrub-bar>
+        <vg-time-display [vgProperty]="'total'"></vg-time-display>
+        <vg-fullscreen></vg-fullscreen>
+      </vg-controls>
+      <video #myMedia [vgMedia]="myMedia" playsinline webkit-playsinline x-webkit-airplay="true"
+        x5-video-player-type="h5" x5-video-orientation="h5" id="vid-{{media.id}}" poster="{{media.cover}}"
+        src="{{media.media_file}}"></video>
+    </vg-player>
   </div>
   <div class="media-info">
     <ion-list>
-    <ion-item>
-      {{media.title}}
-      <ion-note item-right style="text-align:right;">
-        <button ion-button icon-start clear small>
-          <ion-icon name="videocam"></ion-icon>
-          <div>{{media.views_count | num2str}}</div>
-        </button>
-        <button ion-button icon-start clear small (click)="like($event,media);">
-          <ion-icon name="md-heart" [class.liked]="media.liked"></ion-icon>
-          <div>{{media.likes_count | num2str}}</div>
-        </button>  
-      </ion-note>
-    </ion-item>
-    <ion-item>
-      <ion-avatar item-left>
-        <img [src]="media.owner?.avatar">
-      </ion-avatar>
-      <h2>{{media.owner?.name}}</h2>
-      <p>{{media.owner?.school}}</p>
-      <ion-note item-right style="font-size: 12px;">
-        {{media.time | moment:'MM月DD日 HH:mm'}}
-      </ion-note>
-    </ion-item>
+      <ion-item>
+        {{media.title}}
+        <ion-note item-right style="text-align:right;">
+          <button ion-button icon-start clear small>
+            <ion-icon name="videocam"></ion-icon>
+            <div>{{media.views_count | num2str}}</div>
+          </button>
+          <button ion-button icon-start clear small (click)="like($event,media);">
+            <ion-icon name="md-heart" [class.liked]="media.liked"></ion-icon>
+            <div>{{media.likes_count | num2str}}</div>
+          </button>
+        </ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-avatar item-left>
+          <img [src]="media.owner?.avatar">
+        </ion-avatar>
+        <h2>{{media.owner?.name}}</h2>
+        <p>{{media.owner?.school}}</p>
+        <ion-note item-right style="font-size: 12px;">
+          {{media.time | moment:'MM月DD日 HH:mm'}}
+        </ion-note>
+      </ion-item>
     </ion-list>
   </div>
   <div class="comments">
@@ -92,46 +86,49 @@
       <ion-item *ngFor="let comment of comments">
         <ion-row>
           <ion-col col-2>
-              <ion-avatar>
-                  <img [src]="comment.user.avatar || 'assets/imgs/default_avatar.png'">
-                </ion-avatar>
+            <ion-avatar>
+              <img [src]="comment.user.avatar || 'assets/imgs/default_avatar.png'">
+            </ion-avatar>
           </ion-col>
           <ion-col col-10>
-              <div class="body">
-                <div tappable (click)="reply(comment);">
-                  <h2>{{comment.user.nickname}}</h2>
-                  <p class="text">{{comment.content}}</p>
-                  <p class="time">{{comment.time | timeAgo:'YYYY-MM-DD HH:mm:ss'}}</p>
-                </div>
-                <div class="replies" *ngIf="comment.replies.length > 0">
-                  <p class="reply" tappable (click)="reply(comment, rep.from_user.id);" *ngFor="let rep of comment.replies" text-wrap>
-                    <span class="name">{{rep.from_user.nickname}}{{rep.to_user ? (' 回复 ' + rep.to_user.nickname )  : ''}}:</span> {{rep.content}}
-                  </p>
-                </div>
+            <div class="body">
+              <div tappable (click)="reply(comment);">
+                <h2>{{comment.user.nickname}}</h2>
+                <p class="text">{{comment.content}}</p>
+                <p class="time">{{comment.time | timeAgo:'YYYY-MM-DD HH:mm:ss'}}</p>
               </div>
+              <div class="replies" *ngIf="comment.replies.length > 0">
+                <p class="reply" tappable (click)="reply(comment, rep.from_user.id);"
+                  *ngFor="let rep of comment.replies" text-wrap>
+                  <span
+                    class="name">{{rep.from_user.nickname}}{{rep.to_user ? (' 回复 ' + rep.to_user.nickname )  : ''}}:</span>
+                  {{rep.content}}
+                </p>
+              </div>
+            </div>
           </ion-col>
         </ion-row>
-        
+
       </ion-item>
     </ion-list>
   </div>
 
   <ion-infinite-scroll (ionInfinite)="loadMore($event)" [enabled]="hasMore">
-      <ion-infinite-scroll-content
-        loadingSpinner="bubbles"
-        loadingText="正在加载...">
-      </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="正在加载...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
 </ion-content>
 
 <ion-footer>
   <ion-toolbar color="white">
-    <div class="input-box"><ion-input #myInput [(ngModel)]="content" placeholder="说点什么"></ion-input></div>
-      <ion-buttons end>
-        <button ion-button color="primary" [disabled]="!content" (click)="send();">
-          发送
-        </button>
-      </ion-buttons>
+    <div class="input-box">
+      <ion-input #myInput [(ngModel)]="content" placeholder="说点什么"></ion-input>
+    </div>
+    <ion-buttons end>
+      <button ion-button color="primary" [disabled]="!content" (click)="send();">
+        发送
+      </button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-footer>
