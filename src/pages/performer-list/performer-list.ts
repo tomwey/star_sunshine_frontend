@@ -127,7 +127,7 @@ export class PerformerListPage {
   }
 
   openZone(perform) {
-    this.app.getRootNavs()[0].push('OwnerZonePage', { owner: perform, type: 'performer' });
+    this.app.getRootNavs()[0].push('PerformerDetailPage', { performer: perform });
   }
 
   loadMore(e) {

@@ -143,7 +143,8 @@ export class HomePage {
   }
 
   openZone(perform) {
-    this.app.getRootNavs()[0].push('OwnerZonePage', { owner: perform, type: 'performer' });
+    this.app.getRootNavs()[0].push('PerformerDetailPage', { performer: perform });
+    // this.app.getRootNavs()[0].push('OwnerZonePage', { owner: perform, type: 'performer' });
   }
 
   vote() {

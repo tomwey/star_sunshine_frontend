@@ -1,0 +1,96 @@
+<!--
+  Generated template for the PerformerDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar color="white">
+    <ion-title>艺人详情</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="photos">
+    <ion-slides *ngIf="performer.photos.length > 0" [loop]="performer.photos.length > 1"
+      [pager]="performer.photos.length > 1" autoplay="3000">
+      <ion-slide *ngFor="let img of performer.photos">
+        <div class="photo">
+          <img [src]="img">
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <div class="base-info">
+    <ion-item>
+      <ion-avatar item-left>
+        <img [src]="performer.avatar">
+      </ion-avatar>
+      <h2 class="name">{{performer.name}}</h2>
+      <p class="type">
+        <ion-badge>{{performer.type == '1' ? '签约艺人' : '自由艺人'}}</ion-badge>
+      </p>
+      <p class="tags">
+        <span *ngFor="let tag of performer.tags">{{tag}}、</span>
+      </p>
+      <ion-note item-end style="text-align: right;">
+        <span class="custom-follow-btn" tappable (click)="follow(performer);">
+          {{performer.followed ? '已关注' : '关注'}}
+        </span>
+        <p style="text-align:center;">{{performer.follows_count}} 粉丝</p>
+      </ion-note>
+    </ion-item>
+  </div>
+  <div class="pager">
+    <ion-segment [(ngModel)]="dataType" mode="md" (ionChange)="segChanged($event);">
+      <ion-segment-button value="{{type.value}}" *ngFor="let type of dataTypes">
+        {{type.label}}
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div class="empty-error-box" *ngIf="!!error">
+    {{error.message || error}}
+  </div>
+
+  <div class="contents">
+    <div class="medias" *ngIf="dataType == 'mv'">
+      <ion-row>
+        <ion-col col-6 *ngFor="let item of data; let i = index;" [class.odd]="i % 2 == 1" [class.even]="i % 2 == 0">
+          <ion-card tappable (click)="openMedia(item);">
+            <img [src]="item.cover" />
+            <ion-row>
+              <ion-col col-6>
+                <p class="title">{{item.title}}</p>
+              </ion-col>
+              <ion-col col-6>
+                <p class="view-count">
+                  <ion-icon name="videocam"></ion-icon>
+                  <span class="digit">{{item.views_count  | num2str}}</span>
+                </p>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div class="users-performers" *ngIf="dataType == 'follower' || dataType == 'follow'">
+      <ion-list>
+        <ion-item *ngFor="let item of data" tappable (click)="openOwnerZone((item.target || item));">
+          <ion-avatar item-start>
+            <img src="{{(item.target || item).avatar || 'assets/imgs/default_avatar.png'}}">
+          </ion-avatar>
+          <h2>{{(item.target || item).name || (item.target || item).nickname}}</h2>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)" [enabled]="hasMore">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="正在加载...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
