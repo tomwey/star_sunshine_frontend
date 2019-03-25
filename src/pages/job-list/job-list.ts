@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { Tools } from '../../provider/Tools';
 import { Media } from '../../provider/Media';
 
@@ -30,6 +30,7 @@ export class JobListPage {
   constructor(public navCtrl: NavController,
     private tools: Tools,
     private media: Media,
+    private app: App,
     public navParams: NavParams) {
   }
 
@@ -77,6 +78,10 @@ export class JobListPage {
           resolve(false);
         });
     });
+  }
+
+  openJob(job) {
+    this.app.getRootNavs()[0].push('JobDetailPage', { job: job });
   }
 
   loadMore(e) {

@@ -84,7 +84,8 @@ export class HomePage {
   }
 
   openJob(job) {
-
+    console.log(job);
+    this.app.getRootNavs()[0].push('JobDetailPage', { job: job });
   }
 
   // openMoreMV() {

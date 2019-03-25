@@ -4,15 +4,33 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header no-border>
 
-  <ion-navbar>
-    <ion-title>JobDetail</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>通告详情</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+  <div class="base-info">
+    <ion-item>
+      <p class="id">编号 {{job.id}}</p>
+      <h2 class="name">{{job.name}}</h2>
+      <p class="time">
+        <ion-icon name="ios-time-outline"></ion-icon>{{job.begin_time}}—{{job.end_time}}
+      </p>
+      <p class="address">
+        <ion-icon name="ios-pin-outline"></ion-icon>{{job.address}}
+      </p>
+      <ion-note item-right>
+        <div class="price">{{job.price}}<span class="unit">元</span></div>
+      </ion-note>
+    </ion-item>
+  </div>
+  <div class="main">
+    <h2>简介</h2>
+    <div class="body" [innerHTML]="job.body"></div>
+  </div>
 </ion-content>

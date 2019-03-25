@@ -15,11 +15,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class JobDetailPage {
 
+  job: any = {};
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.job = Object.assign({}, this.navParams.data.job);
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad JobDetailPage');
+    // console.log('ionViewDidLoad JobDetailPage');
   }
 
 }
