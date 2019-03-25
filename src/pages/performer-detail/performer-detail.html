@@ -56,6 +56,80 @@
   </div>
 
   <div class="contents">
+    <div class="info" *ngIf="dataType == 'info'">
+      <table class="table">
+        <tr>
+          <td class="label">性别</td>
+          <td class="value">{{performer.sex}}</td>
+          <td class="label">年龄</td>
+          <td class="value">{{performer.age}}</td>
+        </tr>
+        <tr>
+          <td class="label">籍贯</td>
+          <td class="value">{{performer.nation}}</td>
+          <td class="label">学历</td>
+          <td class="value">{{performer.edu_level}}</td>
+        </tr>
+        <tr>
+          <td class="label">专业</td>
+          <td class="value">{{performer.speciality}}</td>
+          <td class="label">婚否</td>
+          <td class="value">{{performer.is_marry ? '已婚' : '未婚'}}</td>
+        </tr>
+        <tr>
+          <td class="label">现职业</td>
+          <td class="value">{{performer.now_job}}</td>
+          <td class="label">爱好</td>
+          <td class="value">{{performer.interest}}</td>
+        </tr>
+        <tr>
+          <td class="label">身高</td>
+          <td class="value">{{performer.height}}公分</td>
+          <td class="label">体重</td>
+          <td class="value">{{performer.weight}}公斤</td>
+        </tr>
+        <tr>
+          <td class="label">体型</td>
+          <td class="value">{{performer.body_size}}</td>
+          <td class="label">三围</td>
+          <td class="value">{{performer.chest_size}}&nbsp;{{performer.waist_size}}&nbsp;{{performer.hip_size}}</td>
+        </tr>
+        <tr>
+          <td class="label">视力</td>
+          <td class="value">{{performer.vision}}</td>
+          <td class="label">发型</td>
+          <td class="value">{{performer.hair_style}}</td>
+        </tr>
+        <tr>
+          <td class="label">头发颜色</td>
+          <td class="value">{{performer.hair_color}}</td>
+          <td class="label">鞋码</td>
+          <td class="value">{{performer.footcode}}码</td>
+        </tr>
+        <tr>
+          <td class="label">常住地</td>
+          <td class="lg-value" colspan="3">{{performer.address}}</td>
+        </tr>
+        <tr *ngIf="!!performer.skills">
+          <td class="label">个人技艺</td>
+          <td class="lg-value" colspan="3">
+            <div class="body" [innerHTML]="performer.skills"></div>
+          </td>
+        </tr>
+        <tr *ngIf="!!performer.trainings">
+          <td class="label">培训经历</td>
+          <td class="lg-value" colspan="3">
+            <div class="body" [innerHTML]="performer.trainings"></div>
+          </td>
+        </tr>
+        <tr *ngIf="!!performer.bio">
+          <td class="label">工作/演出经历</td>
+          <td class="lg-value" colspan="3">
+            <div class="body" [innerHTML]="performer.bio"></div>
+          </td>
+        </tr>
+      </table>
+    </div>
     <div class="medias" *ngIf="dataType == 'mv'">
       <ion-row>
         <ion-col col-6 *ngFor="let item of data; let i = index;" [class.odd]="i % 2 == 1" [class.even]="i % 2 == 0">

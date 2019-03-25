@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Content, App } from 'ionic-angular';
 import { iOSFixedScrollFreeze } from '../../provider/iOSFixedScrollFreeze';
 import { Media } from '../../provider/Media';
 import { Tools } from '../../provider/Tools';
@@ -19,8 +19,12 @@ import { Tools } from '../../provider/Tools';
 export class PerformerDetailPage {
 
   performer: any;
-  dataType: string = 'mv';
+  dataType: string = 'info';
   dataTypes = [
+    {
+      label: '基本信息',
+      value: 'info'
+    },
     {
       label: '作品',
       value: 'mv'
@@ -45,6 +49,7 @@ export class PerformerDetailPage {
     private iosFixed: iOSFixedScrollFreeze,
     private media: Media,
     private tools: Tools,
+    private app: App,
     public navParams: NavParams) {
     this.performer = this.navParams.data.performer;
   }
@@ -125,12 +130,23 @@ export class PerformerDetailPage {
   }
 
   segChanged() {
-    this.data = [];
-    this.error = null;
-    this.pageNum = 1;
-    this.totalPage = 1;
+    if (this.dataType != 'info') {
+      this.data = [];
+      this.error = null;
+      this.pageNum = 1;
+      this.totalPage = 1;
 
-    this.loadData();
+      this.loadData();
+    }
+  }
+
+  openMedia(media) {
+    this.app.getRootNavs()[0].push('MediaDetailPage', media);
+  }
+
+  openOwnerZone(owner) {
+    // console.log(owner);
+    this.app.getRootNavs()[0].push('OwnerZonePage', { owner: owner, type: owner.type || 'user' });
   }
 
   follow(owner) {
