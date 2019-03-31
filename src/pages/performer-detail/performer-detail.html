@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="photos">
+  <div class="photos" *ngIf="performer.photos.length > 0">
     <ion-slides *ngIf="performer.photos.length > 0" [loop]="performer.photos.length > 1"
       [pager]="performer.photos.length > 1" autoplay="3000">
       <ion-slide *ngFor="let img of performer.photos">
@@ -26,14 +26,14 @@
   <div class="base-info">
     <ion-item>
       <ion-avatar item-left>
-        <img [src]="performer.avatar">
+        <img [src]="performer.avatar || 'assets/imgs/default_avatar.png'">
       </ion-avatar>
       <h2 class="name">{{performer.name}}</h2>
       <p class="type">
         <ion-badge>{{performer.type == '1' ? '签约艺人' : '自由艺人'}}</ion-badge>
       </p>
-      <p class="tags">
-        <span *ngFor="let tag of performer.tags">{{tag}}、</span>
+      <p class="tags" text-wrap>
+        <span *ngFor="let tag of performer.tags">{{tag}}&emsp;</span>
       </p>
       <ion-note item-end style="text-align: right;">
         <span class="custom-follow-btn" tappable (click)="follow(performer);">

@@ -39,4 +39,12 @@ export class PerformItemComponent {
       });
   }
 
+  format3Size(performer) {
+    let chest_size = performer.chest_size > 0 ? performer.chest_size : '未知';
+    let waist_size = performer.waist_size > 0 ? performer.waist_size : '未知';
+    let hip_size = performer.hip_size > 0 ? performer.hip_size : '未知';
+    // {{performer.chest_size}},{{performer.waist_size}},{{performer.hip_size}}
+    return `胸围:${chest_size}, 腰围:${waist_size}, 臀围:${hip_size}`
+  }
+
 }

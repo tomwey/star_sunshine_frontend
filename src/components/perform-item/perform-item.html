@@ -1,19 +1,23 @@
 <ion-item>
   <ion-thumbnail item-left>
-    <img [src]="performer.avatar">
-
+    <img [src]="performer.avatar || 'assets/imgs/default_avatar.png'">
   </ion-thumbnail>
-  <h2 class="name">{{performer.name}}&emsp;<ion-badge>{{performer.type == 1 ? '自由艺人' : '签约艺人'}}</ion-badge>
+  <h2 class="name">{{performer.name}}
   </h2>
-  <p class="three-measure">三围 {{performer.chest_size}},{{performer.waist_size}},{{performer.hip_size}}</p>
-  <p class="age">年龄 {{performer.age}}</p>
+  <p class="three-measure">{{format3Size(performer)}}</p>
+  <p class="age">年龄 {{performer.age || '未知'}}&emsp;<span class="tag">{{performer.type == 1 ? '自由艺人' : '签约艺人'}}</span>
+  </p>
   <p class="tags">
-    <span *ngFor="let tag of performer.tags">
-      <ion-badge color="gray">{{tag}}</ion-badge>&nbsp;
+    <span *ngFor="let tag of performer.tags" class="tag outline">
+      {{tag}}
+      <!-- <ion-badge color="gray">{{tag}}</ion-badge>&nbsp; -->
     </span>
   </p>
   <!-- <button ion-button item-right>关注</button> -->
-  <button ion-button item-right (click)="follow(performer,$event);"
-    [class.followed]="performer.followed">{{performer.followed ? '已关注' : '关注'}}</button>
+  <div item-right style="text-align: right">
+    <button ion-button (click)="follow(performer,$event);"
+      [class.followed]="performer.followed">{{performer.followed ? '已关注' : '关注'}}</button>
+  </div>
+
   <!-- <ion-badge>{{performer.type == 1 ? '自由艺人' : '签约艺人'}}</ion-badge> -->
 </ion-item>
