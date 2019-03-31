@@ -110,7 +110,7 @@
           <td class="label">常住地</td>
           <td class="lg-value" colspan="3">{{performer.address}}</td>
         </tr>
-        <tr *ngIf="!!performer.skills">
+        <!-- <tr *ngIf="!!performer.skills">
           <td class="label">个人技艺</td>
           <td class="lg-value" colspan="3">
             <div class="body" [innerHTML]="performer.skills"></div>
@@ -127,8 +127,20 @@
           <td class="lg-value" colspan="3">
             <div class="body" [innerHTML]="performer.bio"></div>
           </td>
-        </tr>
+        </tr> -->
       </table>
+      <div class="box" *ngIf="!!performer.skills">
+        <h2 class="title">个人技艺</h2>
+        <div class="body" [innerHTML]="performer.skills"></div>
+      </div>
+      <div class="box" *ngIf="!!performer.trainings">
+        <h2 class="title">培训经历</h2>
+        <div class="body" [innerHTML]="performer.trainings"></div>
+      </div>
+      <div class="box" *ngIf="!!performer.bio">
+        <h2 class="title">工作/演出经历</h2>
+        <div class="body" [innerHTML]="performer.bio"></div>
+      </div>
     </div>
     <div class="medias" *ngIf="dataType == 'mv'">
       <ion-row>

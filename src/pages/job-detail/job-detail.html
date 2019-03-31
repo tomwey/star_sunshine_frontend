@@ -34,3 +34,10 @@
     <div class="body" [innerHTML]="job.body"></div>
   </div>
 </ion-content>
+<ion-footer>
+  <!-- <div padding> -->
+  <button ion-button (click)="apply()" full [disabled]="job.has_apply">
+    立即报名
+  </button>
+  <!-- </div> -->
+</ion-footer>

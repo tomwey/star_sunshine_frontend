@@ -77,4 +77,20 @@ export class Users {
             // 
         });
     }
+
+    ApplyJob(job_id, params) {
+        return new Promise((resolve, reject) => {
+            this.token().then(token => {
+                params['token'] = token;
+                this.api.POST(`jobs/${job_id}/apply`, params, '正在提交', true)
+                    .then(res => {
+                        resolve(res);
+                    })
+                    .catch(error => {
+                        reject(error);
+                    })
+            })
+                .catch(error => { });
+        });
+    }
 }

@@ -1,0 +1,38 @@
+<!--
+  Generated template for the NewApplyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar color="primary">
+    <ion-buttons start>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon name="ios-close-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>通告报名</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label><span class="required">*</span>姓名</ion-label>
+      <ion-input [(ngModel)]="apply.name" placeholder="输入姓名"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label><span class="required">*</span>电话</ion-label>
+      <ion-input type="tel" [(ngModel)]="apply.phone" placeholder="输入电话"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>住址</ion-label>
+      <ion-input [(ngModel)]="apply.address" placeholder="输入住址"></ion-input>
+    </ion-item>
+  </ion-list>
+  <div padding>
+    <button ion-button full (click)="commit()">提交</button>
+  </div>
+</ion-content>
