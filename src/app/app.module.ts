@@ -35,6 +35,7 @@ import { VgBufferingModule } from 'videogular2/buffering';
 import { PipesModule } from '../pipes/pipes.module';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { ComponentsModule } from '../components/components.module';
+import { QuillModule } from 'ngx-quill';
 // import { APIs } from '../provider/APIs';
 // import { ApiService } from '../provider/api-service';
 
@@ -62,7 +63,8 @@ import { ComponentsModule } from '../components/components.module';
     VgBufferingModule,
     PipesModule,
     IonicImageViewerModule,
-    ComponentsModule
+    ComponentsModule,
+    QuillModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

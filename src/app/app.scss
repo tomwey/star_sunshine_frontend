@@ -58,6 +58,15 @@
     // color: #333!important;
 }
 
+// @import "./quill.core.css";
+// @import "./quill.snow.css";
+// @import "./quill.bubble.css";
+
+[contenteditable] {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+
 // .vg-buffering .bufferingContainer {
 //     margin-top: -25px;
 // }

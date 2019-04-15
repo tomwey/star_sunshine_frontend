@@ -29,7 +29,22 @@
       </ion-slides>
     </div>
 
-
+    <div class="box">
+      <ion-row>
+        <ion-col col-6>
+          <div class="sec-box" tappable (click)="addArtist();">
+            <img src="assets/imgs/icon_add_artist.png" class="artist-icon">
+            <p class="name">艺人入驻</p>
+          </div>
+        </ion-col>
+        <ion-col col-6>
+          <div class="sec-box" tappable (click)="addComp();">
+            <img src="assets/imgs/icon_add_comp.png" class="comp-icon">
+            <p class="name">商家入驻</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
 
     <!-- 最新通告 -->
     <div class="box jobs" *ngIf="entryData.latest_jobs && entryData.latest_jobs.length > 0">

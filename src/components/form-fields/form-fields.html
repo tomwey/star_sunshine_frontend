@@ -1,0 +1,92 @@
+<div class="comm-form-fields">
+  <ion-list>
+    <div *ngFor="let item of controls">
+      <!-- 富文本编辑器 -->
+      <div *ngIf="item.type === 31" class="rich-editor-wrap">
+        <div class="custom-label"><span class="required" *ngIf="item.required">*</span>
+          {{item.name}}</div>
+        <quill-editor [(ngModel)]="item.value"></quill-editor>
+        <!-- <div [froalaEditor]="item.editorOptions" [(froalaModel)]="item.value" class="rich-editor"></div> -->
+      </div>
+
+      <!-- 多文本输入框 -->
+      <div class="text-editor-wrap" *ngIf="item.type == 3">
+        <div class="custom-label"><span class="required" *ngIf="item.required">*</span>
+          {{item.name}}</div>
+        <div class="text-area-wrap">
+          <ion-item>
+            <ion-textarea rows="8" placeholder="{{placeholderFromControl(item)}}" [(ngModel)]="item.value">
+            </ion-textarea>
+          </ion-item>
+        </div>
+
+      </div>
+
+      <ion-item *ngIf="item.type !== 31 && item.type !== 3">
+        <ion-label text-wrap>
+          <span class="required" *ngIf="item.required">*</span>
+          {{item.name}}
+        </ion-label>
+
+        <ion-note item-right *ngIf="item.unit">{{item.unit}}</ion-note>
+
+        <!-- 纯文本 -->
+        <div item-content *ngIf="item.type == 1">
+          {{item.value || item.defaultValue}}
+        </div>
+
+        <!-- 文本输入框控件 -->
+        <ion-input *ngIf="item.type == 2" type="{{item.subtype || 'text'}}" [(ngModel)]="item.value"
+          [disabled]="item.disabled" placeholder="{{placeholderFromControl(item)}}"></ion-input>
+
+        <!-- 验证码控件 -->
+        <ion-input *ngIf="item.type == 20" type="tel" [(ngModel)]="item.value" placeholder="输入{{item.name}}">
+        </ion-input>
+        <button ion-button *ngIf="item.type == 20" item-right clear style="font-size: 14px;" (click)="getCode(item);"
+          [disabled]="item.timerStarting || !item.mobile_control || !item.mobile_control.value">{{item.countdown_text || item.get_code_text}}</button>
+
+        <!-- 多文本输入框 -->
+        <!-- <ion-textarea *ngIf="item.type == 3" rows="10" placeholder="{{placeholderFromControl(item)}}"
+          [(ngModel)]="item.value">
+        </ion-textarea> -->
+
+        <!-- 选择控件 -->
+        <div class="custom-select-control" tappable (click)="selectItem(item);" item-content
+          *ngIf="item.type == 4 || item.type == 5 || item.type == 6">
+          <span *ngIf="item.type !== 6">{{selectValueFromItem(item)}}</span>
+          <span *ngIf="item.type === 6 && (!item.value || item.value.length === 0)">请选择（可多选）</span>
+          <span *ngIf="item.type == 6 && item.value && item.value.length > 0">
+            <span class="option-item-1" *ngFor="let it of (item.value || [])" tappable
+              (click)="removeMe($event,item,it);">
+              <span class="name">{{it.label}}</span>
+              <ion-icon name="ios-close-outline"></ion-icon>
+            </span>
+          </span>
+          <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+        </div>
+
+        <!-- 开关控件 -->
+        <ion-toggle *ngIf="item.type == 8" [(ngModel)]="item.value"></ion-toggle>
+
+        <!-- 日期控件 -->
+        <ion-datetime *ngIf="item.type == 7" cancelText="取消" doneText="确定" displayFormat="YYYY-MM-DD"
+          placeholder="{{placeholderFromControl(item)}}" [min]="item.min" [max]="item.max" [(ngModel)]="item.value">
+        </ion-datetime>
+
+        <!-- 日期时间控件 -->
+        <ion-datetime *ngIf="item.type == 71" cancelText="取消" doneText="确定" displayFormat="YYYY-MM-DD HH:mm:ss"
+          placeholder="{{placeholderFromControl(item)}}" [min]="item.min" [max]="item.max" [(ngModel)]="item.value">
+        </ion-datetime>
+
+        <!-- 时间控件 -->
+        <ion-datetime *ngIf="item.type == 72" cancelText="取消" doneText="确定" displayFormat="HH:mm:ss"
+          placeholder="{{placeholderFromControl(item)}}" [min]="item.min" [max]="item.max" [(ngModel)]="item.value">
+        </ion-datetime>
+        <!-- 时、分控件 -->
+        <ion-datetime *ngIf="item.type == 73" cancelText="取消" doneText="确定" displayFormat="HH:mm" pickerFormat="HH:mm"
+          placeholder="{{placeholderFromControl(item)}}" [min]="item.min" [max]="item.max" [(ngModel)]="item.value">
+        </ion-datetime>
+      </ion-item>
+    </div>
+  </ion-list>
+</div>

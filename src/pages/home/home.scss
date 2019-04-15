@@ -60,47 +60,25 @@ page-home {
         }
     }
 
+    .sec-box {
+        text-align: center;
+        // padding: 10px;
+        .name {
+            font-size: 14px;
+            color: #333;
+            margin: 0;
+            
+        }
+        .artist-icon {
+            height: 32px;
+        }
+        .comp-icon {
+            height: 26px;
+            margin-bottom: 5px;
+        }
+    }
+
     .performers {
         padding-bottom: 0!important;
-        // ion-row,ion-col {
-        //     margin: 0;
-        //     padding: 0;
-        //     text-align: center;
-        // }
-
-        // padding: px;
-        // padding: 15px 0;
-
-        // .performer {
-        //     padding: 10px;
-        //     h4,p {
-        //         margin: 0;
-        //         padding: 0;
-        //     }
-        //     img {
-        //         width: 60px;
-        //         height: 60px;
-
-        //         border-radius: 50%;
-        //     }
-        //     h4 {
-        //         font-size: 14px;
-        //         font-weight: normal;
-        //         color: #333;
-        //         margin-top: 10px;
-        //         margin-bottom: 5px;
-        //     }
-        //     p {
-        //         font-size: 12px;
-        //         color: #666;
-        //         margin-bottom: 10px;
-        //     }
-
-        //     .followed {
-        //         background: white;
-        //         color: color($colors, primary);
-        //         border: 0.55px solid color($colors, primary);
-        //     }
-        // }
     }
 }

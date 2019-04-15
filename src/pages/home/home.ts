@@ -83,6 +83,14 @@ export class HomePage {
     // this.events.publish('openperformers');
   }
 
+  addArtist() {
+    this.app.getRootNavs()[0].push('CreatePerformerPage');
+  }
+
+  addComp() {
+    this.app.getRootNavs()[0].push('CreateCompanyPage');
+  }
+
   openJob(job) {
     // console.log(job);
     this.app.getRootNavs()[0].push('JobDetailPage', { job: job });
