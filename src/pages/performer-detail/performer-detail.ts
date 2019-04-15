@@ -130,9 +130,9 @@ export class PerformerDetailPage {
   }
 
   segChanged() {
+    this.error = null;
     if (this.dataType != 'info') {
       this.data = [];
-      this.error = null;
       this.pageNum = 1;
       this.totalPage = 1;
 
