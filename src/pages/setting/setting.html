@@ -9,47 +9,47 @@
 <ion-content>
   <div class="user-caption" *ngIf="!!user">
     <ion-item>
-        <ion-avatar item-left>
+      <ion-avatar item-left>
         <img [src]="user.avatar || 'assets/imgs/default_avatar.png'" />
-        </ion-avatar>
+      </ion-avatar>
       <h2>{{user.nickname}}</h2>
       <p></p>
       <ion-note item-end>
         <button ion-button small (click)="openZone(user);">个人主页</button>
       </ion-note>
     </ion-item>
-   <div class="stat-box">
-    <ion-grid>
-      <ion-row>
-        <ion-col col-4>
-          <div class="stats" tappable (click)="openZone(user, 'like');">
-            <p class="value">{{user.likes_count}}</p>
-            <p class="label">喜欢</p>
-          </div>
-        </ion-col>
-        <ion-col col-4>
-          <div class="stats" tappable (click)="openZone(user, 'follower');">
-            <p class="value">{{user.follows_count}}</p>
-            <p class="label">粉丝</p>
-          </div>
-        </ion-col>
-        <ion-col col-4>
-          <div class="stats" tappable (click)="openZone(user, 'follow');">
-            <p class="value">{{user.following_count}}</p>
-            <p class="label">关注</p>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
+    <div class="stat-box">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4>
+            <div class="stats" tappable (click)="openZone(user, 'like');">
+              <p class="value">{{user.likes_count}}</p>
+              <p class="label">喜欢</p>
+            </div>
+          </ion-col>
+          <ion-col col-4>
+            <div class="stats" tappable (click)="openZone(user, 'follower');">
+              <p class="value">{{user.follows_count}}</p>
+              <p class="label">粉丝</p>
+            </div>
+          </ion-col>
+          <ion-col col-4>
+            <div class="stats" tappable (click)="openZone(user, 'follow');">
+              <p class="value">{{user.following_count}}</p>
+              <p class="label">关注</p>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
   </div>
   <ion-list></ion-list>
   <ion-list>
     <!-- 交易明细 -->
-    <button ion-item (click)="gotoHistory();">
+    <!-- <button ion-item (click)="gotoHistory();">
         <ion-icon name="ios-list-box-outline" class="trade" item-left></ion-icon>
         历史播放
-      </button>
+      </button> -->
     <!-- 钱包 -->
     <button ion-item (click)="openPage('校园招募', 'campus_recruiting');">
       <ion-icon name="ios-microphone-outline" class="wallet" item-left></ion-icon>
@@ -57,7 +57,7 @@
     </button>
   </ion-list>
   <ion-list></ion-list>
-    <ion-list>
+  <ion-list>
     <!-- 常见问题 -->
     <button ion-item (click)="openPage('常见问题', 'faq');">
       <ion-icon name="icon_faq" class="faq" item-left></ion-icon>
@@ -74,7 +74,7 @@
       <ion-icon name="icon_about" class="about" item-left></ion-icon>
       关于
     </button>
-    
+
   </ion-list>
   <!-- <ion-list></ion-list> -->
   <!-- <ion-list>
