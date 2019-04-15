@@ -1,6 +1,8 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, Renderer } from '@angular/core';
 // import { Users } from '../../provider/Users';
 import { ApiService } from '../../provider/api-service';
+// import { UrlResolver } from '@angular/compiler';
+import { DomSanitizer } from '@angular/platform-browser';
 
 /**
  * Generated class for the FormFieldsComponent component.
@@ -17,7 +19,11 @@ export class FormFieldsComponent {
   @Input() controls: any = [];
   @Output() onControlSelect: EventEmitter<any> = new EventEmitter();
 
-  constructor(private api: ApiService) {
+  @ViewChild('fileInput') fileInput: ElementRef;
+
+  currentFileItem: any;
+
+  constructor(private api: ApiService, private sanitizer: DomSanitizer, private renderer: Renderer) {
     // console.log(this.controls);
   }
 
@@ -119,5 +125,61 @@ export class FormFieldsComponent {
 
   selectItem(item) {
     this.onControlSelect.emit(item);
+  }
+
+  uploadFile(item) {
+    this.currentFileItem = item;
+
+    // let clickEvent: MouseEvent = new MouseEvent('click', { bubbles: true });
+    // this.renderer.invokeElementMethod(
+    //   this.fileInput.nativeElement, "dispatchEvent", [clickEvent]
+    // );
+
+    let input = document.createElement("input");
+    input.type = 'file';
+    input.style.display = "none";
+    input.id = "file-input";
+    if (item.multiple) {
+      input.multiple = item.multiple;
+    }
+    input.onchange = (ev) => {
+      this.selectedFiles(ev);
+    };
+    input.click();
+    document.body.appendChild(input);
+  }
+
+  removeImg(item, file) {
+    const files = item.value || [];
+    const index = files.indexOf(file);
+    if (index !== -1) {
+      files.splice(index, 1);
+      item.value = files;
+    }
+  }
+
+  selectedFiles(ev) {
+    // let files: FileList = this.fileInput.nativeElement.files;
+    let files: FileList = ev.target.files;
+    // console.log(files);
+    // if (this.currentFileItem) {
+    //   this.currentFileItem.value = files;
+    //   // console.log(files);
+    // }
+    let temp = []
+    for (let i = 0; i < files.length; i++) {
+      let file = files[i];
+      temp.push(URL.createObjectURL(file));
+    }
+    if (this.currentFileItem) {
+      this.currentFileItem.value = temp;
+    }
+
+    let node = document.getElementById("file-input");
+    document.body.removeChild(node);
+  }
+
+  sanitize(url: string) {
+    return this.sanitizer.bypassSecurityTrustUrl(url);
   }
 }

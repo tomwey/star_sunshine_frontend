@@ -65,6 +65,27 @@
           <ion-icon name="ios-arrow-forward-outline"></ion-icon>
         </div>
 
+        <!-- 上传文件 -->
+        <!-- <ion-input *ngIf="item.type == 20" type="file" placeholder="" (ionChange)="selectFiles($event);"></ion-input> -->
+        <div class="custom-upload-control" item-content *ngIf="item.type == 22">
+          <!-- <input type="file" [multiple]="item.multiple" (change)="selectedFiles($event)" style="display: none" -->
+          <!-- #fileInput> -->
+          <!-- <span class="filenames" text-wrap>{{fileValueFromItem(item)}}</span>
+          <ion-icon name="ios-arrow-forward-outline"></ion-icon> -->
+          <div class="upload-box">
+            <div class="image-box" *ngFor="let img of item.value">
+              <img [src]="sanitize(img)" imageViewer>
+              <span class="close-btn" tappable (click)="removeImg(item, img);">
+                <ion-icon name="md-close-circle"></ion-icon>
+              </span>
+            </div>
+            <div class="upload-btn" *ngIf="!item.value || item.value.length === 0 || item.multiple" tappable
+              (click)="uploadFile(item);">
+              <ion-icon name="ios-add-outline"></ion-icon>
+            </div>
+          </div>
+        </div>
+
         <!-- 开关控件 -->
         <ion-toggle *ngIf="item.type == 8" [(ngModel)]="item.value"></ion-toggle>
 

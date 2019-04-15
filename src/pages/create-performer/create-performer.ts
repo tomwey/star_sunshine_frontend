@@ -19,7 +19,27 @@ export class CreatePerformerPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CreatePerformerPage');
+    // console.log('ionViewDidLoad CreatePerformerPage');
   }
+
+  controls: any = [
+    {
+      id: 'name',
+      name: "名字",
+      type: 2,
+      required: true,
+    },
+    {
+      id: 'avatar',
+      name: '头像',
+      type: 22
+    },
+    {
+      id: 'photos',
+      name: '照片',
+      type: 22,
+      multiple: true,
+    },
+  ];
 
 }
