@@ -21,6 +21,17 @@ perform-item {
         color: color($colors, primary);
         border: 0.55px solid color($colors, primary);
     }
+    .tags {
+        white-space: nowrap;
+        overflow: auto;
+        display: block;
+        font-size: 0;
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            display: none;
+        }
+    }
     .tag {
         display: inline-block;
         font-size: 12px;
@@ -32,6 +43,8 @@ perform-item {
         padding: 0 8px;
         border-radius: 12px;
         margin-right: 5px;
+        // margin-top: 5px;
+        // min-width: 80px;
         &.outline {
             border: 0.55px solid color($colors, primary);
             background: #fff;

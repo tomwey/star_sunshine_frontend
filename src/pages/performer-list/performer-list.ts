@@ -55,7 +55,12 @@ export class PerformerListPage {
   }
 
   segmentChanged() {
-    this.loadData();
+    this.pageNum = 1;
+    this.content.scrollToTop()
+      .then(() => {
+        this.loadData();
+      });
+    // this.loadData();
   }
 
   loadTags() {
@@ -75,8 +80,8 @@ export class PerformerListPage {
     return new Promise((resolve) => {
       this.media.GetPerformers(this.currentTagId, this.pageNum, this.pageSize)
         .then(res => {
-          const data = res['data'];
-          const total = res['total'];
+          let data = res['data'];
+          let total = res['total'];
 
           if (this.pageNum === 1) {
             this.data = data;
@@ -91,7 +96,7 @@ export class PerformerListPage {
             this.error = null;
           }
 
-          this.totalPage = (total + this.pageSize - 1) / this.pageSize;
+          this.totalPage = Math.floor((total + this.pageSize - 1) / this.pageSize);
 
           // this.totalPage = Math.floor((data.total + this.pageSize - 1) / this.pageSize); 
           this.hasMore = this.totalPage > this.pageNum;

@@ -1,4 +1,9 @@
 page-performer-list {
+    virtual-scroller {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
     ion-segment.scrollable {
         display: block;
         white-space: nowrap;
@@ -13,7 +18,7 @@ page-performer-list {
     
         ion-segment-button.segment-button {
             display: inline-block;
-            min-width: 100px;
+            min-width: 78px;
             width: auto;
         }
     }
