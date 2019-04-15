@@ -5,7 +5,7 @@
   <h2 class="name">{{performer.name}}
   </h2>
   <p class="three-measure">{{format3Size(performer)}}</p>
-  <p class="age">年龄 {{performer.age || '未知'}}&emsp;<span class="tag">{{performer.type == 1 ? '自由艺人' : '签约艺人'}}</span>
+  <p class="age">年龄 {{performer.age || '未知'}}&emsp;<span class="tag">{{performer.type_name}}</span>
   </p>
   <p class="tags">
     <span *ngFor="let tag of performer.tags" class="tag outline">

@@ -30,7 +30,7 @@
       </ion-avatar>
       <h2 class="name">{{performer.name}}</h2>
       <p class="type">
-        <ion-badge>{{performer.type == '1' ? '签约艺人' : '自由艺人'}}</ion-badge>
+        <ion-badge>{{performer.type_name}}</ion-badge>
       </p>
       <p class="tags" text-wrap>
         <span *ngFor="let tag of performer.tags">{{tag}}&emsp;</span>
