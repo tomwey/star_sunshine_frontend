@@ -7,7 +7,13 @@
 <ion-header no-border>
 
   <ion-navbar color="primary">
-    <ion-title>艺人库</ion-title>
+    <ion-title>
+      <ion-segment [(ngModel)]="currentType" color="white" (ionChange)="segmentChanged2($event)">
+        <ion-segment-button value="{{type.id}}" *ngFor="let type of types">
+          {{type.name}}
+        </ion-segment-button>
+      </ion-segment>
+    </ion-title>
   </ion-navbar>
 
   <ion-toolbar color="white" *ngIf="tags.length > 0">

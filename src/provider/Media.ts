@@ -269,10 +269,10 @@ export class Media {
         });
     }
 
-    GetPerformers(tag_id = null, pageNum, pageSize) {
+    GetPerformers(type = null, tag_id = null, pageNum, pageSize) {
         return new Promise((resolve, reject) => {
             this.users.token().then(token => {
-                this.api.GET(`performs`, { token: token, tag_id: tag_id, page: pageNum, size: pageSize })
+                this.api.GET(`performs`, { type: type, token: token, tag_id: tag_id, page: pageNum, size: pageSize })
                     .then(data => {
                         resolve(data);
                     })

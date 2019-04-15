@@ -33,6 +33,22 @@ export class PerformerListPage {
 
   hasMore: boolean = false;
 
+  currentType: number = null;
+  types: any = [
+    {
+      id: 1,
+      name: '自由艺人'
+    },
+    {
+      id: 2,
+      name: '签约艺人'
+    },
+    {
+      id: 3,
+      name: '推广艺人'
+    },
+  ];
+
   @ViewChild(Content) content: Content;
 
   constructor(public navCtrl: NavController,
@@ -54,9 +70,17 @@ export class PerformerListPage {
 
   }
 
+  segmentChanged2(ev) {
+    this.pageNum = 1;
+    this.content.scrollToTop(50)
+      .then(() => {
+        this.loadData();
+      });
+  }
+
   segmentChanged() {
     this.pageNum = 1;
-    this.content.scrollToTop()
+    this.content.scrollToTop(50)
       .then(() => {
         this.loadData();
       });
@@ -78,7 +102,7 @@ export class PerformerListPage {
 
   loadData() {
     return new Promise((resolve) => {
-      this.media.GetPerformers(this.currentTagId, this.pageNum, this.pageSize)
+      this.media.GetPerformers(this.currentType, this.currentTagId, this.pageNum, this.pageSize)
         .then(res => {
           let data = res['data'];
           let total = res['total'];
