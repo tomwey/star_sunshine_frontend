@@ -13,5 +13,23 @@
 </ion-header>
 
 <ion-content>
-  <form-fields [controls]="controls" (onControlSelect)="controlSelected($event);"></form-fields>
+  <div *ngIf="needCreate">
+    <form-fields [controls]="controls" (onControlSelect)="controlSelected($event);"></form-fields>
+    <div padding>
+      <button ion-button block (click)="commit()">提交</button>
+    </div>
+  </div>
+  <div *ngIf="!!performer" class="performer">
+    <div class="base-info">
+      <img [src]="performer.avatar">
+      <h2 class="name">{{performer.name}}</h2>
+      <p class="nick">艺名: {{performer.nickname}}</p>
+    </div>
+    <div class="approve-info">
+      <p class="time">入驻时间: {{performer.time}}</p>
+      <p class="approve-time">审核时间: {{performer.approve_time}}</p>
+      <p class="approve-state">审核状态: {{performer.approve_state}}</p>
+    </div>
+  </div>
+
 </ion-content>

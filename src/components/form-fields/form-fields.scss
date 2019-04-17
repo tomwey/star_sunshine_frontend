@@ -88,6 +88,27 @@ form-fields {
             }
                         
         }
+
+        .custom-radio-control {
+            overflow: hidden;
+            white-space: wrap;
+            padding-left: 15px;
+            .option {
+                display: inline-block;
+                font-size: 14px;
+                color: #333;
+                margin-right: 15px;
+                height: 40px;
+                line-height: 40px;
+                padding-right: 10px;
+                ion-icon {
+                    vertical-align: -1px;
+                    margin-right: 3px;
+                    color: #666;
+                    // font-weight: 700;
+                }
+            }
+        }
         .custom-select-control {
             // background: red;
             width: 100%;
@@ -96,9 +117,14 @@ form-fields {
             padding-right: 5px;
             font-size: 14px;
             color: #999;
-            ion-icon {
-                float: right;
-                margin-top: 3px;
+            position: relative;
+            .right-arrow {
+                position: absolute;
+                right: 5px;
+                top: 50%;
+                margin-top: -8px;
+                // float: right;
+                // margin-top: 3px;
             }
 
             .filenames {
@@ -128,6 +154,10 @@ form-fields {
         }
     }
 
+    .option-items {
+        padding-right: 10px;
+    }
+
     .option-item-1 {
         display: inline-block;
         font-size: 10px;
@@ -143,7 +173,7 @@ form-fields {
         ion-icon {
             font-size: 18px;
             vertical-align: middle;
-            padding-top: 3px;
+            // padding-top: 3px;
             // line-height: 1;
         }
         .name {
@@ -179,6 +209,7 @@ form-fields {
     .rich-editor-wrap {
         padding: 15px;
         border-bottom: 0.55px solid #f2f2f2;
+        background: #fff;
         .custom-label {
             font-size: 14px;
             color: #666;

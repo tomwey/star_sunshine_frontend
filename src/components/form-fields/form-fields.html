@@ -55,14 +55,22 @@
           *ngIf="item.type == 4 || item.type == 5 || item.type == 6">
           <span *ngIf="item.type !== 6">{{selectValueFromItem(item)}}</span>
           <span *ngIf="item.type === 6 && (!item.value || item.value.length === 0)">请选择（可多选）</span>
-          <span *ngIf="item.type == 6 && item.value && item.value.length > 0">
+          <span class="option-items" *ngIf="item.type == 6 && item.value && item.value.length > 0">
             <span class="option-item-1" *ngFor="let it of (item.value || [])" tappable
               (click)="removeMe($event,item,it);">
               <span class="name">{{it.label}}</span>
               <ion-icon name="ios-close-outline"></ion-icon>
             </span>
           </span>
-          <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+          <ion-icon name="ios-arrow-forward-outline" class="right-arrow"></ion-icon>
+        </div>
+
+        <!-- 单选按钮 -->
+        <div class="custom-radio-control" item-content *ngIf="item.type == 41">
+          <span class="option" *ngFor="let opt of item.options" tappable (click)="item.value = opt;">
+            <ion-icon name="{{item.value == opt ? 'ios-radio-button-on-outline' : 'ios-radio-button-off-outline'}}">
+            </ion-icon>{{opt.label}}
+          </span>
         </div>
 
         <!-- 上传文件 -->
@@ -74,7 +82,7 @@
           <ion-icon name="ios-arrow-forward-outline"></ion-icon> -->
           <div class="upload-box">
             <div class="image-box" *ngFor="let img of item.value">
-              <img [src]="sanitize(img)" imageViewer>
+              <img [src]="sanitize(urlByFile(img))" imageViewer>
               <span class="close-btn" tappable (click)="removeImg(item, img);">
                 <ion-icon name="md-close-circle"></ion-icon>
               </span>

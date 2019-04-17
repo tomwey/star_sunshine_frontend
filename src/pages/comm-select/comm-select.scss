@@ -1,0 +1,29 @@
+page-comm-select {
+    .item-ios {
+        font-size: 14px !important;
+        color: #333;
+        ion-icon {
+            font-size: 24px;
+            color: rgb(199,198,202);
+            &.checked {
+                color: color($colors, primary);
+            }
+        }
+    }
+
+    .list-ios > .item-block:last-child {
+        border-bottom-color: #eee;
+    }
+
+    .list-ios > .item-block:first-child {
+        border-top-color: #eee;
+    }
+    
+    .list-ios .item-block .item-inner {
+        border-bottom-color: #eee;
+    }
+
+    .list-ios {
+        margin-top: 0;
+    }
+}

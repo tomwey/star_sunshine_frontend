@@ -166,13 +166,13 @@ export class FormFieldsComponent {
     //   this.currentFileItem.value = files;
     //   // console.log(files);
     // }
-    let temp = []
-    for (let i = 0; i < files.length; i++) {
-      let file = files[i];
-      temp.push(URL.createObjectURL(file));
-    }
+    // let temp = []
+    // for (let i = 0; i < files.length; i++) {
+    //   let file = files[i];
+    //   temp.push(URL.createObjectURL(file));
+    // }
     if (this.currentFileItem) {
-      this.currentFileItem.value = temp;
+      this.currentFileItem.value = files;
     }
 
     let node = document.getElementById("file-input");
@@ -181,5 +181,9 @@ export class FormFieldsComponent {
 
   sanitize(url: string) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
+  }
+
+  urlByFile(file) {
+    return URL.createObjectURL(file);
   }
 }

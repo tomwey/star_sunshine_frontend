@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api-service';
 import { Users } from './Users';
+// import { calcBindingFlags } from '@angular/core/src/view/util';
 
 @Injectable()
 export class Media {
@@ -281,6 +282,58 @@ export class Media {
                     })
             });
         });
+    }
+
+    CreatePerformer(payload, avatar, photos, callback) {
+        let body = new FormData();
+
+        body.append("payload", JSON.stringify(payload))
+        this.users.token().then(token => {
+            body.append("token", token);
+            // console.log(avatar);
+            if (avatar.length > 0) {
+                // console.log(123);
+                body.append("avatar", avatar[0], 'avatar.jpg');
+            }
+
+            photos = photos || [];
+
+            for (let i = 0; i < photos.length; i++) {
+                let file = photos[i];
+                body.append("files[][file]", file, `image${i}.jpg`);
+            }
+
+            this.api.POST2(`performs/create`, body)
+                .then(data => {
+                    if (callback) {
+                        // callback(null);
+                        if (data['code'] == 0) {
+                            callback(true, data['data']);
+                        } else {
+                            callback(false, data['message']);
+                        }
+                    }
+                })
+                .catch(error => {
+                    if (callback) {
+                        callback(false, '服务器超时，请重试');
+                    }
+                })
+        });
+    }
+
+    GetPerformerTypes(callback) {
+        this.api.GET('performs/types', null)
+            .then(data => {
+                if (callback) {
+                    callback(data);
+                }
+            })
+            .catch(error => {
+                if (callback) {
+                    callback(null);
+                }
+            });
     }
 
     Follow(action, type, followID) {

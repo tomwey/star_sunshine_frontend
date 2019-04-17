@@ -57,6 +57,26 @@ export class Users {
         });
     }
 
+    GetPerformer(cb) {
+        this.token().then(token => {
+            this.api.GET('user/performer', { token: token })
+                .then(res => {
+                    if (res['code'] == 0) {
+                        if (cb) {
+                            cb(res['data']);
+                        }
+                    } else {
+                        if (cb)
+                            cb(null);
+                    }
+                })
+                .catch(error => {
+                    if (cb) cb(null);
+                })
+        })
+            .catch(error => { });
+    }
+
     logout(): Promise<any> {
         return this.storage.remove('token');
     }
